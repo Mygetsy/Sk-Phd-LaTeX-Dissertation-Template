@@ -89,7 +89,7 @@
 \newcommand*{\tocheader}{
 \ifnumequal{\value{pgnum}}{1}{%
     \ifendTOC\else\hbox to \linewidth%
-      {\noindent{}~\hfill{\ifnum\value{thesislang}=1 Page\else Стр.\fi}}\par%
+      {\noindent{}~\hfill{\ifnum\value{thesislang}=1 Page\else\foreignlanguage{russian}{Стр.}\fi}}\par%
       \ifnumless{\value{page}}{3}{}{%
         \vspace{0.5\onelineskip}
       }

@@ -1,0 +1,118 @@
+% Русский титульный лист автореферата + информационная страница.
+% Обязателен и для русской, и для английской версии. Структура --- как в
+% синопсисе Сколтеха: без оппонентов и ведущей организации.
+%
+% Источник данных: thesislang=0 --- основные сведения; thesislang=1 --- русские
+% сведения (…Rus). Русские поля защиты (\defenseDate, \defenseCouncilAddress,
+% \synopsisDate, секретарь) берутся напрямую --- они всегда на русском.
+\ifnum\value{thesislang}=1
+  \def\ttlOrg{\thesisOrganizationRus}%
+  \def\ttlAuthor{\thesisAuthorRus}%
+  \def\ttlTitle{\thesisTitleRus}%
+  \def\ttlSpecialtyTitle{\thesisSpecialtyTitleRus}%
+  \def\ttlDegree{\thesisDegreeRus}%
+  \def\ttlCity{\thesisCityRus}%
+  \def\ttlSupervisorFio{\supervisorFioRus}%
+  \def\ttlSupervisorRegalia{\supervisorRegaliaRus}%
+\else
+  \def\ttlOrg{\thesisOrganization}%
+  \def\ttlAuthor{\thesisAuthor}%
+  \def\ttlTitle{\thesisTitle}%
+  \def\ttlSpecialtyTitle{\thesisSpecialtyTitle}%
+  \def\ttlDegree{\thesisDegree}%
+  \def\ttlCity{\thesisCity}%
+  \def\ttlSupervisorFio{\supervisorFio}%
+  \def\ttlSupervisorRegalia{\supervisorRegalia}%
+\fi
+\thispagestyle{empty}
+
+\noindent%
+\begin{center}
+{\large {\ttlOrg}}
+\end{center}
+\vspace{0pt plus2fill}
+
+\hspace*{-1.5cm}
+\begin{tabularx}{\textwidth}{@{}lXr@{}}%
+    & & \large{На правах рукописи}\\
+    \IfFileExists{images/logo.pdf}{\includegraphics[height=2.5cm]{logo}}{\rule[0pt]{0pt}{2.5cm}} & &
+    \ifnumequal{\value{showperssign}}{0}{%
+        \rule[0pt]{0pt}{1.5cm}
+    }{%
+        \includegraphics[height=1.5cm]{personal-signature.png}
+    }\\
+\end{tabularx}
+
+\vspace{0pt plus1fill}
+\begin{center}
+\textbf{\large \ttlAuthor}
+\end{center}
+
+\vspace{0pt plus3fill}
+\begin{center}
+\textbf{\Large %\MakeUppercase
+\ttlTitle}
+
+\vspace{0pt plus3fill}
+{\large Специальность \thesisSpecialtyNumber\ "---\par <<\ttlSpecialtyTitle>>}
+
+\ifdefined\thesisSpecialtyTwoNumber
+{\large Специальность \thesisSpecialtyTwoNumber\ "---\par <<\thesisSpecialtyTwoTitle>>}
+\fi
+
+\vspace{0pt plus1.5fill}
+\Large{Автореферат}\par
+\large{диссертации на соискание учёной степени\par \ttlDegree}
+\end{center}
+
+\vspace{0pt plus4fill}
+{\centering\ttlCity~--- \thesisYear\par}
+
+\newpage
+% оборотная сторона обложки --- информационная страница
+\thispagestyle{empty}
+\noindent Работа выполнена в организации <<\ttlOrg>>.
+
+\vspace{0.008\paperheight plus1fill}
+\noindent%
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+    Научный руководитель: & \ttlSupervisorRegalia\par
+                            \ifdefined\supervisorDead
+                            \framebox{\textbf{\ttlSupervisorFio}}
+                            \else
+                            \textbf{\ttlSupervisorFio}
+                            \fi
+                            \vspace{0.013\paperheight}\\
+\end{tabularx}
+\vspace{0.28\paperheight plus1fill}
+
+\noindent Защита диссертации состоится \defenseDate~на заседании диссертационного
+совета \defenseCouncilNumber, созданного на базе организации <<\ttlOrg>>.
+
+\textbf{Адрес:} \defenseCouncilAddress
+
+\vspace{0.008\paperheight plus1fill}
+\noindent С диссертацией можно ознакомиться в библиотеке Сколтеха и на сайте
+\href{https://dissovet.skoltech.ru/}{https://dissovet.skoltech.ru}.
+
+\vspace{0.008\paperheight plus1fill}
+\noindent{Автореферат разослан \synopsisDate.}
+
+\vspace{0.008\paperheight plus1fill}
+\noindent%
+\begin{tabularx}{\textwidth}{@{}%
+    >{\raggedright\arraybackslash}b{18em}@{}
+    >{\centering\arraybackslash}X
+    r
+    @{}}
+    Учёный секретарь\par
+    диссертационного совета\par
+    \defenseCouncilNumber,\par
+    \defenseSecretaryRegalia
+    &
+    \ifnumequal{\value{showsecrsign}}{0}{}{%
+        \includegraphics[width=2cm]{secretary-signature.png}%
+    }%
+    &
+    \defenseSecretaryFio
+\end{tabularx}

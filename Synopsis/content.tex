@@ -1,19 +1,28 @@
-\pdfbookmark{Общая характеристика работы}{characteristic}             % Закладка pdf
-\section*{Общая характеристика работы}
+\ifnum\value{thesislang}=1
+  \pdfbookmark{General characteristics of the work}{characteristic}
+  \section*{General characteristics of the work}
+\else
+  \pdfbookmark{Общая характеристика работы}{characteristic}             % Закладка pdf
+  \section*{Общая характеристика работы}
+\fi
 
-\newcommand{\actuality}{\pdfbookmark[1]{Актуальность}{actuality}\underline{\textbf{\actualityTXT}}}
-\newcommand{\progress}{\pdfbookmark[1]{Разработанность темы}{progress}\underline{\textbf{\progressTXT}}}
-\newcommand{\aim}{\pdfbookmark[1]{Цели}{aim}\underline{{\textbf\aimTXT}}}
-\newcommand{\tasks}{\pdfbookmark[1]{Задачи}{tasks}\underline{\textbf{\tasksTXT}}}
-\newcommand{\aimtasks}{\pdfbookmark[1]{Цели и задачи}{aimtasks}\aimtasksTXT}
-\newcommand{\novelty}{\pdfbookmark[1]{Научная новизна}{novelty}\underline{\textbf{\noveltyTXT}}}
-\newcommand{\influence}{\pdfbookmark[1]{Практическая значимость}{influence}\underline{\textbf{\influenceTXT}}}
-\newcommand{\methods}{\pdfbookmark[1]{Методология и методы исследования}{methods}\underline{\textbf{\methodsTXT}}}
-\newcommand{\defpositions}{\pdfbookmark[1]{Положения, выносимые на защиту}{defpositions}\underline{\textbf{\defpositionsTXT}}}
-\newcommand{\reliability}{\pdfbookmark[1]{Достоверность}{reliability}\underline{\textbf{\reliabilityTXT}}}
-\newcommand{\probation}{\pdfbookmark[1]{Апробация}{probation}\underline{\textbf{\probationTXT}}}
-\newcommand{\contribution}{\pdfbookmark[1]{Личный вклад}{contribution}\underline{\textbf{\contributionTXT}}}
-\newcommand{\publications}{\pdfbookmark[1]{Публикации}{publications}\underline{\textbf{\publicationsTXT}}}
+\newcommand{\actuality}{\underline{\textbf{\actualityTXT}}}
+\newcommand{\actualityandprogress}{\underline{\textbf{\actualityandprogressTXT}}}
+\newcommand{\progress}{\underline{\textbf{\progressTXT}}}
+\newcommand{\goalsproblems}{\underline{\textbf{\goalsproblemsTXT}}}
+\newcommand{\goal}{\textbf{\goalTXT}}
+\newcommand{\aim}{\underline{{\textbf\aimTXT}}}
+\newcommand{\tasks}{\underline{\textbf{\tasksTXT}}}
+\newcommand{\novelty}{\underline{\textbf{\noveltyTXT}}}
+\newcommand{\influence}{\underline{\textbf{\influenceTXT}}}
+\newcommand{\theoreticalsignificance}{\underline{\textbf{\theoreticalsignificanceTXT}}}
+\newcommand{\practicalsignificance}{\underline{\textbf{\practicalsignificanceTXT}}}
+\newcommand{\methods}{\underline{\textbf{\methodsTXT}}}
+\newcommand{\defpositions}{\underline{\textbf{\defpositionsTXT}}}
+\newcommand{\reliability}{\underline{\textbf{\reliabilityTXT}}}
+\newcommand{\probation}{\underline{\textbf{\probationTXT}}}
+\newcommand{\contribution}{\underline{\textbf{\contributionTXT}}}
+\newcommand{\publications}{\underline{\textbf{\publicationsTXT}}}
 
 \input{common/characteristic} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
 
@@ -24,6 +33,51 @@
 %\textbf{ХХХ}~страниц текста с~\textbf{ХХ}~рисунками и~5~таблицами. Список
 %литературы содержит \textbf{ХХX}~наименование.
 
+\ifnum\value{thesislang}=1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% English %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfbookmark{Contents of the work}{description}
+\section*{Contents of the work}
+The \underline{\textbf{introduction}} substantiates the relevance of the
+research, reviews the literature on the problem, formulates the goal and problems,
+and states the scientific novelty and practical significance of the work.
+
+\underline{\textbf{Chapter 1}} is devoted to \fixme{\dots}
+
+A figure can be added like this:
+\begin{figure}[ht]
+    \centerfloat{
+        \hfill
+        \subcaptionbox{\LaTeX}{\includegraphics[scale=0.27]{latex}}
+        \hfill
+        \subcaptionbox{Knuth}{\includegraphics[width=0.25\linewidth]{knuth1}}
+        \hfill
+    }
+    \caption{\fixme{Figure caption.}}\label{fig:latex-en}
+\end{figure}
+
+An unnumbered inline formula is added like this:
+\[
+    \lambda_{T_s} = K_x\frac{d{x}}{d{T_s}}, \qquad
+    \lambda_{q_s} = K_x\frac{d{x}}{d{q_s}},
+\]
+
+\underline{\textbf{Chapter 2}} is devoted to \fixme{\dots}
+
+\underline{\textbf{Chapter 3}} is devoted to \fixme{\dots}
+The results presented in Chapter~3 are published in~\cite{Panov2025, Panov2022PoreHealing}.
+
+\underline{\textbf{Chapter 4}} \fixme{\dots}
+
+\FloatBarrier
+\pdfbookmark{Conclusion}{conclusion}
+The \underline{\textbf{conclusion}} presents the main results of the work:
+\input{common/concl}
+
+\pdfbookmark{References}{bibliography}
+% The list of the author's publications is generated automatically (see \nocite
+% in the {\publications} section of common/characteristic.tex).
+\else
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Русский %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pdfbookmark{Содержание работы}{description}                          % Закладка pdf
 \section*{Содержание работы}
 Во \underline{\textbf{введении}} обосновывается актуальность
@@ -79,6 +133,7 @@
 При использовании пакета \verb!biblatex! список публикаций автора по теме
 диссертации формируется в разделе <<\publications>>\ файла
 \verb!common/characteristic.tex!  при помощи команды \verb!\nocite!
+\fi
 
 \ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{} % не рекомендуется применять пакет микротипографики к автоматически генерируемому списку литературы
 \urlstyle{rm}                               % ссылки URL обычным шрифтом

@@ -40,10 +40,22 @@
 \begin{document}
 %%% Переопределение именований типовых разделов
 % https://tex.stackexchange.com/a/156050
-\gappto\captionsrussian{\input{common/renames}} % for polyglossia and babel
+\ifnum\value{thesislang}=1
+  \gappto\captionsenglish{\input{common/renames}}% for polyglossia and babel
+\else
+  \gappto\captionsrussian{\input{common/renames}}% for polyglossia and babel
+\fi
 \input{common/renames}
 
-\input{Synopsis/title}        % Титульный лист
+% Обязательная русская обложка + информационная страница --- в обеих версиях.
+% В английской версии далее добавляется английская обложка + информационная страница.
+\ifnum\value{thesislang}=1 \selectlanguage{russian}\fi
+\input{Synopsis/title_rus}    % 1. Русский титульный лист + информационная страница
+\ifnum\value{thesislang}=1
+  \newpage
+  \selectlanguage{english}%
+  \input{Synopsis/title}      % 2. Английский титульный лист + информационная страница
+\fi
 %\mainmatter                   % В том числе начинает нумерацию страниц арабскими цифрами с единицы
 \mainmatter*                  % Нумерация страниц не изменится, но начнётся с новой страницы
 \input{Synopsis/content}      % Содержание автореферата
@@ -61,6 +73,17 @@
     \thesisTitle
     \par\medskip
 
+    \ifnum\value{thesislang}=1
+    Abstract of the dissertation for the degree of \thesisDegreeShort
+    \par\bigskip
+
+    Signed for printing \blank[\widthof{999}].\blank[\widthof{999}].\blank[\widthof{99999}].
+    Order No.~\blank[\widthof{999999999999}]
+
+    Format 60\(\times\)90/16. Conv.\ print.\ sheets 1. Circulation 100 copies.
+
+    Printing house \blank[0.5\linewidth]
+    \else
     Автореф. дис. на соискание ученой степени \thesisDegreeShort
     \par\bigskip
 
@@ -71,6 +94,7 @@
     %Это не совсем формат А5, но наиболее близкий, подробнее: http://ru.wikipedia.org/w/index.php?oldid=78976454
 
     Типография \blank[0.5\linewidth]
+    \fi
 \end{center}
 \cleardoublepage
 

@@ -55,17 +55,29 @@
 
 %%% Заголовки библиографии:
 
-% для автореферата:
-\newcommand{\bibtitleauthor}{Публикации автора по теме диссертации}
-
-% для стиля библиографии `\insertbiblioauthorgrouped`
-\newcommand{\bibtitleauthorvak}{В изданиях из списка ВАК РФ}
-\newcommand{\bibtitleauthorscopus}{В изданиях, входящих в международную базу цитирования Scopus}
-\newcommand{\bibtitleauthorwos}{В изданиях, входящих в международную базу цитирования Web of Science}
-\newcommand{\bibtitleauthorother}{В прочих изданиях}
-\newcommand{\bibtitleauthorconf}{В сборниках трудов конференций}
-\newcommand{\bibtitleauthorpatent}{Зарегистрированные патенты}
-\newcommand{\bibtitleauthorprogram}{Зарегистрированные программы для ЭВМ}
+\ifnumequal{\value{thesislang}}{1}{% English thesis
+  % для автореферата:
+  \newcommand{\bibtitleauthor}{Publications of the author on the subject of the dissertation}
+  % для стиля библиографии `\insertbiblioauthorgrouped`
+  \newcommand{\bibtitleauthorvak}{In journals from the list of the Higher Attestation Commission}
+  \newcommand{\bibtitleauthorscopus}{In journals indexed by Scopus}
+  \newcommand{\bibtitleauthorwos}{In journals indexed by Web of Science}
+  \newcommand{\bibtitleauthorother}{In other publications}
+  \newcommand{\bibtitleauthorconf}{In conference proceedings}
+  \newcommand{\bibtitleauthorpatent}{Registered patents}
+  \newcommand{\bibtitleauthorprogram}{Registered computer programs}
+}{% Russian thesis
+  % для автореферата:
+  \newcommand{\bibtitleauthor}{Публикации автора по теме диссертации}
+  % для стиля библиографии `\insertbiblioauthorgrouped`
+  \newcommand{\bibtitleauthorvak}{В изданиях из списка ВАК РФ}
+  \newcommand{\bibtitleauthorscopus}{В изданиях, входящих в международную базу цитирования Scopus}
+  \newcommand{\bibtitleauthorwos}{В изданиях, входящих в международную базу цитирования Web of Science}
+  \newcommand{\bibtitleauthorother}{В прочих изданиях}
+  \newcommand{\bibtitleauthorconf}{В сборниках трудов конференций}
+  \newcommand{\bibtitleauthorpatent}{Зарегистрированные патенты}
+  \newcommand{\bibtitleauthorprogram}{Зарегистрированные программы для ЭВМ}
+}
 
 % для стиля библиографии `\insertbiblioauthorimportant`:
 \newcommand{\bibtitleauthorimportant}{Наиболее значимые \protect\MakeLowercase\bibtitleauthor}

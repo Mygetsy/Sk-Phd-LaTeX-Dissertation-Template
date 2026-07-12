@@ -78,9 +78,10 @@ to compile on TeX Live 2025.
 * `presentation.tex` + `Presentation/` — a beamer defence presentation.
 
 ## Notes
-* The **synopsis (автореферат)** is, by Russian regulation, a Russian-language
-  document; build it in Russian mode (`thesislang=0`). It is not required for an
-  English/Skoltech dissertation.
+* The **synopsis (автореферат)** follows the same switch: in Russian mode it has a
+  Russian cover + information page; in English mode it has the Russian cover +
+  information page first, then the English cover + information page (Skoltech
+  layout, no opponents).
 * In English mode the appendices are numbered A, B, C…; in Russian mode — А, Б, В…
 * Put your organization logo at `images/logo.pdf` (vector PDF); delete the file
   if you do not want a logo.

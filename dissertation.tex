@@ -84,10 +84,12 @@
 }{\counterwithin{figure}{chapter}}
 \ifnumequal{\value{contnumtab}}{1}{\counterwithout{table}{chapter}
 }{\counterwithin{table}{chapter}}
-\include{Dissertation/part1}           % Глава 1 (пример) / example chapter
-% Добавляйте новые главы по образцу part1 / add more chapters like part1:
-%\include{Dissertation/part2}          % Глава 2
-%\include{Dissertation/part3}          % Глава 3
+% Каждая глава --- отдельная папка Dissertation/partN/ с файлом partN.tex и
+% папкой pictures/. Each chapter is a folder Dissertation/partN/ with partN.tex
+% and a pictures/ subfolder. Copy part1/ to add more chapters.
+\subimport{Dissertation/part1/}{part1} % Глава 1 (пример) / example chapter
+%\subimport{Dissertation/part2/}{part2} % Глава 2
+%\subimport{Dissertation/part3/}{part3} % Глава 3
 \include{Dissertation/conclusion}      % Заключение / Conclusion
 \include{Dissertation/acknowledgements}% Благодарности / Acknowledgements
 \include{Dissertation/acronyms}        % Список сокращений и условных обозначений

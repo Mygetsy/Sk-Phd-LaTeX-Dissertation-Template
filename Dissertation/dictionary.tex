@@ -1,0 +1,19 @@
+\ifnumequal{\value{thesislang}}{1}{%
+  \chapter*{Glossary}%
+  \addcontentsline{toc}{chapter}{Glossary}%
+
+  \textbf{TeX} : A typesetting system created by the American computer scientist
+  Donald Knuth.
+
+  \textbf{pangram} : A short text that uses all, or almost all, letters of the
+  alphabet.
+}{%
+  \chapter*{Словарь терминов}%             % Заголовок
+  \addcontentsline{toc}{chapter}{Словарь терминов}%  % Добавляем его в оглавление
+
+  \textbf{TeX} : Cистема компьютерной вёрстки, разработанная американским
+  профессором информатики Дональдом Кнутом.
+
+  \textbf{панграмма} : Короткий текст, использующий все или почти все буквы
+  алфавита.
+}

@@ -1,0 +1,190 @@
+%%% Основные сведения (на языке работы) / Main data (in the thesis language) %%%
+% Эти поля печатаются на «главном» титульном листе: русском при thesislang=0 и
+% английском при thesislang=1. Русский титульный лист английской работы берёт
+% данные из блока «…Rus» ниже.
+\ifnum\value{thesislang}=1
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% English thesis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \newcommand{\thesisAuthorLastName}{\fixme{LastName}}
+  \newcommand{\thesisAuthorOtherNames}{\fixme{First Middle}}
+  \newcommand{\thesisAuthorInitials}{\fixme{F.\,M.}}
+  \newcommand{\thesisTitle}            % English title
+  {\fixme{Title of the dissertation}}
+  \newcommand{\thesisSpecialtyTitle}   % English name of the specialty
+  {\fixme{Name of the specialty}}
+  \newcommand{\thesisDegree}           % English degree
+  {\fixme{Doctor of Philosophy in \dots}}
+  \newcommand{\thesisDegreeShort}      % English degree, short
+  {\fixme{PhD}}
+  \newcommand{\thesisCity}             % English city
+  {\fixme{City}}
+  \newcommand{\thesisOrganization}     % English organization
+  {\fixme{Full name of the organization}}
+  \newcommand{\thesisOrganizationShort}% English organization, short
+  {\fixme{OrgShort}}
+  \newcommand{\thesisInOrganization}   % English "The work was carried out at ..."
+  {\fixme{the organization where the work was carried out}}
+  \newcommand{\supervisorFio}          % Supervisor, name
+  {\fixme{Supervisor Name}}
+  \newcommand{\supervisorRegalia}      % Supervisor, regalia
+  {\fixme{degree, title}}
+  \newcommand{\supervisorFioShort}     % Supervisor, name, short
+  {\fixme{F.\,M.~LastName}}
+  \newcommand{\supervisorRegaliaShort} % Supervisor, regalia, short
+  {\fixme{deg., tit.}}
+\else
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Русская диссертация %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \newcommand{\thesisAuthorLastName}{\fixme{Фамилия}}
+  \newcommand{\thesisAuthorOtherNames}{\fixme{Имя Отчество}}
+  \newcommand{\thesisAuthorInitials}{\fixme{И.\,О.}}
+  \newcommand{\thesisTitle}              % Диссертация, название
+  {\fixme{Длинное название диссертационной работы, состоящее из~достаточно большого
+  количества слов, совсем длинное длинное длинное длинное название, из~которого
+  простому обывателю знакомы, в~лучшем случае, лишь отдельные слова}}
+  \newcommand{\thesisSpecialtyTitle}     % Диссертация, специальность, название (название взято с сайта ВАК для примера)
+  {\fixme{Технология обработки, хранения и~переработки злаковых, бобовых культур,
+  крупяных продуктов, плодоовощной продукции и~виноградарства}}
+  \newcommand{\thesisDegree}             % Диссертация, ученая степень
+  {\fixme{кандидата физико-математических наук}}
+  \newcommand{\thesisDegreeShort}        % Диссертация, ученая степень, краткая запись
+  {\fixme{канд. физ.-мат. наук}}
+  \newcommand{\thesisCity}               % Диссертация, город написания диссертации
+  {\fixme{Город}}
+  \newcommand{\thesisOrganization}       % Диссертация, организация
+  {\fixme{Федеральное государственное автономное образовательное учреждение высшего
+  образования <<Длинное название образовательного учреждения <<АББРЕВИАТУРА>>}}
+  \newcommand{\thesisOrganizationShort}  % Диссертация, краткое название организации для доклада
+  {\fixme{НазУчДисРаб}}
+  \newcommand{\thesisInOrganization}     % Диссертация, организация в предложном падеже: Работа выполнена в ...
+  {\fixme{учреждении с~длинным длинным длинным длинным названием, в~котором
+  выполнялась данная диссертационная работа}}
+  \newcommand{\supervisorFio}              % Научный руководитель, ФИО
+  {\fixme{Фамилия Имя Отчество}}
+  \newcommand{\supervisorRegalia}          % Научный руководитель, регалии
+  {\fixme{уч. степень, уч. звание}}
+  \newcommand{\supervisorFioShort}         % Научный руководитель, ФИО
+  {\fixme{И.\,О.~Фамилия}}
+  \newcommand{\supervisorRegaliaShort}     % Научный руководитель, регалии
+  {\fixme{уч.~ст.,~уч.~зв.}}
+\fi
+
+\newcommand{\thesisAuthor}             % Диссертация, ФИО автора
+{%
+    \texorpdfstring{% \texorpdfstring takes two arguments and uses the first for (La)TeX and the second for pdf
+        \thesisAuthorLastName~\thesisAuthorOtherNames% так будет отображаться на титульном листе или в тексте, где будет использоваться переменная
+    }{%
+        \thesisAuthorLastName, \thesisAuthorOtherNames% эта запись для свойств pdf-файла. В таком виде, если pdf будет обработан программами для сбора библиографических сведений, будет правильно представлена фамилия.
+    }
+}
+\newcommand{\thesisAuthorShort}        % Диссертация, ФИО автора инициалами
+{\thesisAuthorInitials~\thesisAuthorLastName}
+%\newcommand{\thesisUdk}                % Диссертация, УДК
+%{\fixme{xxx.xxx}}
+\newcommand{\thesisSpecialtyNumber}    % Диссертация, специальность, номер (нейтрально)
+{\fixme{XX.XX.XX}}
+%% \newcommand{\thesisSpecialtyTwoNumber} % Диссертация, вторая специальность, номер
+%% {\fixme{XX.XX.XX}}
+%% \newcommand{\thesisSpecialtyTwoTitle}  % Диссертация, вторая специальность, название
+%% {\fixme{Теория и~методика физического воспитания, спортивной тренировки,
+%% оздоровительной и~адаптивной физической культуры}}
+\newcommand{\thesisYear}               % Диссертация, год написания диссертации
+{\the\year}
+
+%% \newcommand{\supervisorDead}{}           % Рисовать рамку вокруг фамилии
+
+%% \newcommand{\supervisorTwoDead}{}        % Рисовать рамку вокруг фамилии
+%% \newcommand{\supervisorTwoFio}           % Второй научный руководитель, ФИО
+%% {\fixme{Фамилия Имя Отчество}}
+%% \newcommand{\supervisorTwoRegalia}       % Второй научный руководитель, регалии
+%% {\fixme{уч. степень, уч. звание}}
+%% \newcommand{\supervisorTwoFioShort}      % Второй научный руководитель, ФИО
+%% {\fixme{И.\,О.~Фамилия}}
+%% \newcommand{\supervisorTwoRegaliaShort}  % Второй научный руководитель, регалии
+%% {\fixme{уч.~ст.,~уч.~зв.}}
+
+\newcommand{\opponentOneFio}           % Оппонент 1, ФИО
+{\fixme{Фамилия Имя Отчество}}
+\newcommand{\opponentOneRegalia}       % Оппонент 1, регалии
+{\fixme{доктор физико-математических наук, профессор}}
+\newcommand{\opponentOneJobPlace}      % Оппонент 1, место работы
+{\fixme{Не очень длинное название для места работы}}
+\newcommand{\opponentOneJobPost}       % Оппонент 1, должность
+{\fixme{старший научный сотрудник}}
+
+\newcommand{\opponentTwoFio}           % Оппонент 2, ФИО
+{\fixme{Фамилия Имя Отчество}}
+\newcommand{\opponentTwoRegalia}       % Оппонент 2, регалии
+{\fixme{кандидат физико-математических наук}}
+\newcommand{\opponentTwoJobPlace}      % Оппонент 2, место работы
+{\fixme{Основное место работы c длинным длинным длинным длинным названием}}
+\newcommand{\opponentTwoJobPost}       % Оппонент 2, должность
+{\fixme{старший научный сотрудник}}
+
+%% \newcommand{\opponentThreeFio}         % Оппонент 3, ФИО
+%% {\fixme{Фамилия Имя Отчество}}
+%% \newcommand{\opponentThreeRegalia}     % Оппонент 3, регалии
+%% {\fixme{кандидат физико-математических наук}}
+%% \newcommand{\opponentThreeJobPlace}    % Оппонент 3, место работы
+%% {\fixme{Основное место работы c длинным длинным длинным длинным названием}}
+%% \newcommand{\opponentThreeJobPost}     % Оппонент 3, должность
+%% {\fixme{старший научный сотрудник}}
+
+\newcommand{\leadingOrganizationTitle} % Ведущая организация, дополнительные строки. Удалить, чтобы не отображать в автореферате
+{\fixme{Федеральное государственное бюджетное образовательное учреждение высшего
+профессионального образования с~длинным длинным длинным длинным названием}}
+
+\newcommand{\defenseDate}              % Защита, дата
+{\fixme{DD mmmmmmmm YYYY~г.~в~XX часов}}
+\newcommand{\defenseDateEng}           % Защита, дата (англ.) --- только для thesislang=1
+{\fixme{Month DD, YYYY~at~XX:XX}}
+\newcommand{\defenseCouncilNumber}     % Защита, номер диссертационного совета
+{\fixme{Д\,123.456.78}}
+\newcommand{\defenseCouncilTitle}      % Защита, учреждение диссертационного совета
+{\fixme{Название учреждения}}
+\newcommand{\defenseCouncilAddress}    % Защита, адрес учреждение диссертационного совета
+{\fixme{Адрес}}
+\newcommand{\defenseCouncilAddressEng} % Защита, адрес (англ.) --- только для thesislang=1
+{\fixme{Address in English}}
+\newcommand{\defenseCouncilPhone}      % Телефон для справок
+{\fixme{+7~(0000)~00-00-00}}
+
+\newcommand{\defenseSecretaryFio}      % Секретарь диссертационного совета, ФИО
+{\fixme{Фамилия Имя Отчество}}
+\newcommand{\defenseSecretaryRegalia}  % Секретарь диссертационного совета, регалии
+{\fixme{д-р~физ.-мат. наук}}            % Для сокращений есть ГОСТы, например: ГОСТ Р 7.0.12-2011 + http://base.garant.ru/179724/#block_30000
+
+\newcommand{\synopsisLibrary}          % Автореферат, название библиотеки
+{\fixme{Название библиотеки}}
+\newcommand{\synopsisDate}             % Автореферат, дата рассылки
+{\fixme{DD mmmmmmmm}\the\year~года}
+\newcommand{\synopsisDateEng}          % Автореферат, дата рассылки (англ.) --- только для thesislang=1
+{\fixme{DD mmmmmmmm}\the\year~year}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Обязательные русские сведения для английской диссертации (thesislang=1) %%%
+%%% Russian data for the mandatory Russian title page & abstract (EN thesis) %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Русская диссертация (thesislang=0): эти команды НЕ используются --- заполнять
+%   нужно только основные сведения выше.
+% Английская диссертация (thesislang=1): основные сведения выше заполняются
+%   по-английски, а перечисленные ниже --- по-русски (для обязательного русского
+%   титульного листа и аннотации).
+\newcommand{\thesisAuthorRus}          % ФИО автора по-русски (полностью)
+{\fixme{Фамилия Имя Отчество}}
+\newcommand{\thesisTitleRus}           % Название диссертации по-русски
+{\fixme{Русское название диссертационной работы}}
+\newcommand{\thesisSpecialtyTitleRus}  % Название специальности по-русски
+{\fixme{Русское название специальности}}
+\newcommand{\thesisDegreeRus}          % Учёная степень по-русски (род. падеж)
+{\fixme{кандидата физико-математических наук}}
+\newcommand{\thesisCityRus}            % Город по-русски
+{\fixme{Город}}
+\newcommand{\thesisOrganizationRus}    % Организация по-русски (для шапки титула)
+{\fixme{Полное название организации по-русски}}
+\newcommand{\supervisorFioRus}         % Научный руководитель, ФИО по-русски
+{\fixme{Фамилия Имя Отчество}}
+\newcommand{\supervisorRegaliaRus}     % Научный руководитель, регалии по-русски
+{\fixme{уч. степень, уч. звание}}
+
+% To avoid conflict with beamer class use \providecommand
+\providecommand{\keywords}%            % Ключевые слова для метаданных PDF диссертации и автореферата
+{}

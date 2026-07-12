@@ -1,0 +1,47 @@
+% ---------------------------------------------------------------------------
+% Пример главы / Example chapter.
+% Замените содержимое своим текстом. Скопируйте этот файл (part2.tex, ...) и
+% раскомментируйте соответствующие строки \include в dissertation.tex, чтобы
+% добавить новые главы.
+% Replace the content below with your own. Copy this file (part2.tex, ...) and
+% uncomment the matching \include lines in dissertation.tex to add more chapters.
+% ---------------------------------------------------------------------------
+\chapter{\fixme{Chapter title}}
+\label{ch:example}
+
+\fixme{Introductory paragraph of the chapter.} A reference looks like
+this~\autocite{Panov2025}.
+
+\section{\fixme{Section title}}
+\label{sec:example}
+
+\fixme{Section text.} An inline equation $E = mc^2$ and a display equation:
+\begin{equation}
+  \label{eq:example}
+  \nabla \cdot \mathbf{u} = 0 .
+\end{equation}
+Equations, figures and tables are cross-referenced with \verb!\cref!, e.g.
+\cref{eq:example} and \cref{sec:example}.
+
+% Пример рисунка / Example figure (uncomment and provide the image file):
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=0.6\linewidth]{example-image}
+%  \caption{\fixme{Figure caption.}}
+%  \label{fig:example}
+%\end{figure}
+
+% Пример таблицы / Example table:
+\begin{table}[htbp]
+  \centering
+  \caption{\fixme{Table caption.}}
+  \label{tab:example}
+  \begin{tabular}{lc}
+    \hline
+    \fixme{Quantity} & \fixme{Value} \\
+    \hline
+    $a$ & 1 \\
+    $b$ & 2 \\
+    \hline
+  \end{tabular}
+\end{table}

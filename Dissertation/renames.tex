@@ -1,0 +1,18 @@
+% Переопределения названий для nomencl. Так как опция russian не для utf8
+\ifnumequal{\value{thesislang}}{1}{% English thesis
+  \renewcommand{\nomname}{List of Abbreviations and Symbols}%
+  \renewcommand{\eqdeclaration}[1]{, see~(#1)}%
+  \renewcommand{\pagedeclaration}[1]{, p.~#1}%
+  \renewcommand{\nomAname}{Latin letters}%
+  \renewcommand{\nomGname}{Greek letters}%
+  \renewcommand{\nomXname}{Superscripts}%
+  \renewcommand{\nomZname}{Subscripts}%
+}{% Русская диссертация
+  \renewcommand{\nomname}{Список сокращений и условных обозначений}%
+  \renewcommand{\eqdeclaration}[1]{, см.~(#1)}%
+  \renewcommand{\pagedeclaration}[1]{, стр.~#1}%
+  \renewcommand{\nomAname}{Латинские буквы}%
+  \renewcommand{\nomGname}{Греческие буквы}%
+  \renewcommand{\nomXname}{Верхние индексы}%
+  \renewcommand{\nomZname}{Индексы}%
+}

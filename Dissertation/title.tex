@@ -1,0 +1,93 @@
+% English title page (used only when thesislang=1, after the Russian one).
+% Uses the core \thesis… macros from common/data.tex, which hold the English
+% values in an English thesis.
+\thispagestyle{empty}
+\begin{center}
+{\thesisOrganization}
+\end{center}
+%
+\vspace{0pt plus4fill}
+\IfFileExists{images/logo.pdf}{
+  \begin{minipage}[b]{0.5\linewidth}
+    \begin{flushleft}
+      \includegraphics[height=3.5cm]{logo}
+    \end{flushleft}
+  \end{minipage}%
+  \begin{minipage}[b]{0.5\linewidth}
+    \begin{flushright}
+      As a manuscript\\
+    \end{flushright}
+  \end{minipage}
+}{
+\begin{flushright}
+As a manuscript
+\end{flushright}
+}
+%
+\vspace{0pt plus6fill}
+\begin{center}
+{\large \thesisAuthor}
+\end{center}
+%
+\vspace{0pt plus1fill}
+\begin{center}
+\textbf {\large %\MakeUppercase
+\thesisTitle}
+
+\vspace{0pt plus2fill}
+{%\small
+Specialty \thesisSpecialtyNumber\
+
+\thesisSpecialtyTitle
+}
+
+\ifdefined\thesisSpecialtyTwoNumber
+{%\small
+Specialty \thesisSpecialtyTwoNumber\
+
+\thesisSpecialtyTwoTitle
+}
+\fi
+
+\vspace{0pt plus2fill}
+Dissertation for the degree of
+
+\thesisDegree
+\end{center}
+%
+\vspace{0pt plus4fill}
+\begin{flushright}
+\ifdefined\supervisorTwoFio
+Supervisors:
+
+\supervisorRegalia
+
+\ifdefined\supervisorDead
+\framebox{\supervisorFio}
+\else
+\supervisorFio
+\fi
+
+\supervisorTwoRegalia
+
+\ifdefined\supervisorTwoDead
+\framebox{\supervisorTwoFio}
+\else
+\supervisorTwoFio
+\fi
+\else
+Supervisor:
+
+\supervisorRegalia
+
+\ifdefined\supervisorDead
+\framebox{\supervisorFio}
+\else
+\supervisorFio
+\fi
+\fi
+
+\end{flushright}
+%
+\vspace{0pt plus4fill}
+{\centering\thesisCity\ --- \thesisYear\par}

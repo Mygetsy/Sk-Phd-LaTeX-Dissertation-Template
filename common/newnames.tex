@@ -1,0 +1,68 @@
+% Новые переменные, которые могут использоваться во всём проекте
+% ГОСТ 7.0.11-2011
+% 9.2 Оформление текста автореферата диссертации
+% 9.2.1 Общая характеристика работы включает в себя следующие основные структурные
+% элементы:
+% Названия структурных элементов общей характеристики работы --- на языке
+% работы. Names of the "general characteristics" elements, in the thesis language.
+\ifnumequal{\value{thesislang}}{1}{% English thesis
+  \newcommand{\actualityTXT}{Relevance of the topic.}
+  \newcommand{\progressTXT}{State of the art.}
+  \newcommand{\aimTXT}{The aim}
+  \newcommand{\tasksTXT}{objectives}
+  \newcommand{\noveltyTXT}{Scientific novelty:}
+  \newcommand{\influenceTXT}{Practical significance}
+  \newcommand{\methodsTXT}{Methodology and methods.}
+  \newcommand{\defpositionsTXT}{Statements to be defended:}
+  \newcommand{\reliabilityTXT}{Reliability}
+  \newcommand{\probationTXT}{Approbation of the work.}
+  \newcommand{\contributionTXT}{Personal contribution.}
+  \newcommand{\publicationsTXT}{Publications.}
+}{% Russian thesis
+  % актуальность темы исследования;
+  \newcommand{\actualityTXT}{Актуальность темы.}
+  % степень ее разработанности;
+  \newcommand{\progressTXT}{Степень разработанности темы.}
+  % цели и задачи;
+  \newcommand{\aimTXT}{Целью}
+  \newcommand{\tasksTXT}{задачи}
+  % научную новизну;
+  \newcommand{\noveltyTXT}{Научная новизна:}
+  % теоретическую и практическую значимость работы;
+  % или чаще используют просто
+  \newcommand{\influenceTXT}{Практическая значимость}
+  % методологию и методы исследования;
+  \newcommand{\methodsTXT}{Методология и методы исследования.}
+  % положения, выносимые на защиту;
+  \newcommand{\defpositionsTXT}{Основные положения, выносимые на~защиту:}
+  % степень достоверности и апробацию результатов.
+  \newcommand{\reliabilityTXT}{Достоверность}
+  \newcommand{\probationTXT}{Апробация работы.}
+  \newcommand{\contributionTXT}{Личный вклад.}
+  \newcommand{\publicationsTXT}{Публикации.}
+}
+
+
+%%% Заголовки библиографии:
+
+% для автореферата:
+\newcommand{\bibtitleauthor}{Публикации автора по теме диссертации}
+
+% для стиля библиографии `\insertbiblioauthorgrouped`
+\newcommand{\bibtitleauthorvak}{В изданиях из списка ВАК РФ}
+\newcommand{\bibtitleauthorscopus}{В изданиях, входящих в международную базу цитирования Scopus}
+\newcommand{\bibtitleauthorwos}{В изданиях, входящих в международную базу цитирования Web of Science}
+\newcommand{\bibtitleauthorother}{В прочих изданиях}
+\newcommand{\bibtitleauthorconf}{В сборниках трудов конференций}
+\newcommand{\bibtitleauthorpatent}{Зарегистрированные патенты}
+\newcommand{\bibtitleauthorprogram}{Зарегистрированные программы для ЭВМ}
+
+% для стиля библиографии `\insertbiblioauthorimportant`:
+\newcommand{\bibtitleauthorimportant}{Наиболее значимые \protect\MakeLowercase\bibtitleauthor}
+
+% для списка литературы в диссертации и списка чужих работ в автореферате:
+\ifnumequal{\value{thesislang}}{1}{%
+  \newcommand{\bibtitlefull}{References}%
+}{%
+  \newcommand{\bibtitlefull}{Список литературы} % (ГОСТ Р 7.0.11-2011, 4)
+}

@@ -69,12 +69,14 @@
 % ВАЖНО: \include нельзя помещать в аргумент \ifnumequal, поэтому используем
 % примитивный \ifnum...\fi (иначе \include ломает вёрстку и переключение языка).
 \ifnum\value{thesislang}=1 \selectlanguage{russian}\fi
-\include{Dissertation/title_rus}       % Русский титульный лист
+\include{Dissertation/title_rus}       % 1. Русский титульный лист
 \ifnum\value{thesislang}=1
-  \include{Dissertation/abstract_rus}  % Русская аннотация (обязательна)
   \selectlanguage{english}%
-  \include{Dissertation/title}         % Английский титульный лист
-  \include{Dissertation/abstract}      % Английская аннотация
+  \include{Dissertation/title}         % 2. Английский титульный лист
+  \selectlanguage{russian}%
+  \include{Dissertation/abstract_rus}  % 3. Русская аннотация
+  \selectlanguage{english}%
+  \include{Dissertation/abstract}      % 4. Английская аннотация
 \fi
 \include{Dissertation/contents}        % Оглавление
 \ifnumequal{\value{contnumfig}}{1}{}{\counterwithout{figure}{chapter}}

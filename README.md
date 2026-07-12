@@ -1,7 +1,11 @@
-# Bilingual PhD Dissertation LaTeX Template (Russian / English)
+# Skoltech Bilingual PhD Dissertation LaTeX Template (Russian / English)
 
-A LaTeX template for a PhD dissertation and its synopsis (автореферат), with a
-single **language switch**:
+A LaTeX template for a **Skoltech** PhD dissertation and its synopsis
+(автореферат). The Skoltech organization data (name, city, dissertation-council
+address) is pre-filled; you only need to add your personal data. The template
+**defaults to English mode**.
+
+It has a single **language switch**:
 
 * **Russian mode** — the whole document is in Russian (GOST Р 7.0.11-2011).
 * **English mode** — the mandatory Russian title page and abstract come first,
@@ -22,20 +26,22 @@ single **language switch**:
 Open **`common/setup.tex`** and set the counter near the top:
 
 ```latex
-\setcounter{thesislang}{0}  % 0 = Russian dissertation
-                            % 1 = English dissertation (Russian title + abstract first)
+\setcounter{thesislang}{1}  % 1 = English dissertation (Russian title + abstract first) -- DEFAULT
+                            % 0 = Russian dissertation (everything in Russian)
 ```
 
 That is the only change needed to switch languages.
 
 ## Quick start
 1. Set `\setcounter{thesislang}{...}` in `common/setup.tex` (0 or 1).
-2. Fill in your data in **`common/data.tex`**:
+2. Fill in your data in **`common/data.tex`** (the Skoltech organization, city and
+   council address are already filled — replace the red `\fixme{…}` personal
+   fields):
    * the main `\thesis…` / `\supervisor…` fields hold the **main-language** values
-     (Russian in mode 0, English in mode 1);
+     (English in mode 1, Russian in mode 0);
    * for an **English** thesis, also fill the **`\thesis…Rus`** block (author,
-     title, specialty, degree, city, organization, supervisor) — these feed the
-     mandatory Russian title page and abstract.
+     title, specialty, degree, supervisor) — these feed the mandatory Russian
+     title page and abstract.
 3. Put your Russian and English abstracts in `Dissertation/abstract_rus.tex` and
    `Dissertation/abstract.tex`, and your acknowledgements in
    `Dissertation/acknowledgements.tex`.

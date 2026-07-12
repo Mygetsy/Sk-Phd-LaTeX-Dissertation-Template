@@ -2,43 +2,88 @@
 % Используем примитивный \ifnum...\else...\fi, чтобы не ломать \verb внутри.
 \ifnum\value{thesislang}=1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% English placeholder %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The guidance in the comments below is adapted from O.\,V.~Vasilyev,
+% "Preparing a Dissertation for the Degree of Candidate of Sciences:
+% a 10-Minute Guide" (Skoltech). The comments (%) do not appear in the PDF ---
+% they are here to help you write each section. Replace every \fixme{...}.
+
+% A brief literature review focused on the *significance* of the research area:
+% recent progress, impact on science and/or industry. Discuss what is already
+% addressed (with references) and highlight what is not (or only partially)
+% addressed, then articulate why now is the right time for this research and how
+% it fits the field's agenda.
 {\actualityandprogress} \fixme{Introduce the topic, its relevance and the place of
 this work in the field. You may cite other works with \autocite{Panov2025}.}
 
-{\goalsproblems} The {\goal} of this dissertation is to \fixme{\dots}
+% The goal must be *concrete* --- to develop a theory / model / methodology, to
+% demonstrate the applicability of one, etc. "To study ..." is NOT a goal.
+% Note: "цели и задачи" = "goals and problems addressed" (not "aims/objectives/
+% tasks"). Problems are specific (technical, theoretical, experimental) and are
+% distinct from the broader "main results submitted for the defense" below.
+{\goalsproblems} The {\goal} of this dissertation is to \fixme{develop \dots}
 
 To achieve the goal of the dissertation, the following {\tasks} are addressed:
 \begin{enumerate}
   \item \fixme{\dots}
 \end{enumerate}
 
+% Focus on what is *novel*, not on the problems solved: a new model for an
+% unstudied behaviour, new regimes described, a theory generalized, etc.
+% Useful phrasings:
+%   - The thesis presents a fundamentally new (method, approach, ...) with unique
+%     properties that distinguish it from all known ...
+%   - The dissertation also presents the novel (model, method, theory, ...)
+%     developed by the author ...
+%   - The author's groundbreaking results also include ...
 {\novelty}
 \begin{enumerate}
   \item \fixme{\dots}
 \end{enumerate}
 
+% Which results have theoretical and/or practical significance, and why. If a
+% new approach founds a research direction, say how it may develop; if results
+% apply to other fields, list them; explain the significance in plain terms.
 {\theoreticalsignificance} \fixme{of the results of the dissertation lies in \dots}
 
 {\practicalsignificance} \fixme{of this study lies in \dots}
 
+% Focus on the *tools* --- methods, theories, approaches, experimental
+% procedures or facilities the research is based on or used to verify/validate
+% the results --- NOT on the author's achievements.
 {\methods}
 \fixme{\dots}
 
+% Of primary importance: these are read verbatim at the defense and the defense
+% presentation is built around them. Distinct from "goals and problems": the
+% main results are grandiose and assessable (a model/theory developed, a theorem
+% proved, a method proposed, a phenomenon discovered) and must be unique to you.
 {\defpositions}
 \begin{enumerate}
   \item \fixme{\dots}
 \end{enumerate}
 
+% Clarify your contribution to each paper/chapter the dissertation is based on,
+% especially for multi-author papers; substantiate its nature and, where
+% applicable, emphasize that it is defining. Write in the third person.
+{\contribution} \fixme{The author had a decisive contribution to \dots}
+
+% Validation is broader than "simulation vs. experiment" --- include
+% reproducibility, detailed method descriptions, agreement with published
+% results, etc. Typical opening: "The validity of the results of the
+% dissertation is confirmed by the following."
 {\reliability}
 \fixme{\dots}
 
+% List the conferences/venues where the results were presented (and, together
+% with {\publications} below, the publications). May be merged with validity.
 {\probation} The main results of the work were presented~at:
 \begin{itemize}
   \item \fixme{\dots}
 \end{itemize}
 
-{\contribution} \fixme{\dots}
-
+% Suggested phrasing: "The main results on the topic of the dissertation are
+% presented in N publications, M of which in journals indexed by Web of Science
+% or Scopus, K in conference abstracts."
 {\publications} \fixme{The main results are presented in N publications.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \else

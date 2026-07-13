@@ -3,12 +3,28 @@
 %\providecommand*{\BibDash}{}                % В стилях ugost2008 отключаем использование тире как разделителя
 \urlstyle{rm}                               % ссылки URL обычным шрифтом
 \ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{} % не рекомендуется применять пакет микротипографики к автоматически генерируемому списку литературы
-\insertbibliofull                           % Подключаем Bib-базы: все статьи единым списком
-% Режим с подсписками
-%\insertbiblioexternal                      % Подключаем Bib-базы: статьи, не являющиеся статьями автора по теме диссертации
-% Для вывода выберите и расскомментируйте одно из двух
-%\insertbiblioauthor                        % Подключаем Bib-базы: работы автора единым списком 
-%\insertbiblioauthorgrouped                 % Подключаем Bib-базы: работы автора сгруппированные (ВАК, WoS, Scopus и т.д.)
+%\insertbibliofull                          % Все источники единым списком / all references in one list
+% Режим с подсписками: сначала чужие работы, затем работы автора отдельным списком.
+% Split mode: general literature first, then the author's own publications as a
+% separate list (as in the dissertation).
+\insertbiblioexternal                       % Литература (кроме работ автора) / general literature
+% Для вывода работ автора выберите одно из двух / choose one for the author's works:
+\insertbiblioauthor                         % работы автора единым списком / author's works in one list
+%\insertbiblioauthorgrouped                 % работы автора по базам (ВАК, WoS, Scopus, ...) / grouped by index
 \ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}
 \urlstyle{tt}                               % возвращаем установки шрифта ссылок URL
 %\hypersetup{ urlcolor={urlcolor} }          % Восстанавливаем цвет ссылок
+
+% Подсчёт полного числа источников для счётчика \citenum (используется во введении)
+% Count the total number of references for the \citenum counter (used in the intro).
+\begingroup
+\makeatletter
+\defbibenvironment{justcount}
+  {\setcounter{citenum}{0}}
+  {\write\@auxout{%
+    \string\gdef\string\totalsavedcitenum{\the\value{citenum}}%
+  }}
+  {\stepcounter{citenum}\renewcommand{\blx@driver}[1]{}}
+\printbibliography[heading=nobibheading,env=justcount,keyword=bibliofull]
+\makeatother
+\endgroup

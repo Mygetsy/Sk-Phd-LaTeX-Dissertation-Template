@@ -31,15 +31,17 @@
 \input{common/characteristic} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
 
 \ifnumequal{\value{thesislang}}{1}{%
+% English pluralization: 1 -> singular, everything else -> plural, so the plural
+% ending is given for BOTH the "2--4" and the "5+" slots of \formbytotal.
 \textbf{Volume and structure of the work.} The dissertation consists of an
-introduction, \formbytotal{totalchapter}{chapter}{}{s}{},
-a conclusion and \formbytotal{totalappendix}{appendix}{}{es}{}.
+introduction, \formbytotal{totalchapter}{chapter}{}{s}{s},
+a conclusion and \formbytotal{totalappendix}{appendix}{}{es}{es}.
 The total volume of the dissertation is
-\formbytotal{TotPages}{page}{}{s}{}, including
-\formbytotal{totalcount@figure}{figure}{}{s}{} and
-\formbytotal{totalcount@table}{table}{}{s}{}.
+\formbytotal{TotPages}{page}{}{s}{s}, including
+\formbytotal{totalcount@figure}{figure}{}{s}{s} and
+\formbytotal{totalcount@table}{table}{}{s}{s}.
 The reference list contains
-\formbytotal{citenum}{item}{}{s}{}.
+\formbytotal{citenum}{item}{}{s}{s}.
 
 % Organization of the Dissertation (Vasilyev, 10-Minute Guide): a structure
 % paragraph alone is not enough --- describe what each chapter is about. Think of

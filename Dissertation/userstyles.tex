@@ -259,12 +259,13 @@
 \let\originalcot\cot
 \let\originalcsc\csc
 
-% Русская математическая традиция применяется только в русской работе
-% (thesislang=0). В английской работе (thesislang=1) используется обычная
-% латеховская запись математики: курсивные греческие буквы, \le/\ge, \tan и т.д.
-% Russian math conventions apply only to the Russian thesis; the English thesis
-% keeps standard LaTeX math (italic Greek, \le/\ge, \tan, ...).
-\ifnum\value{thesislang}=1\else
+% Обычная латеховская запись математики в обеих версиях: курсивные греческие
+% буквы, \le/\ge, \tan и т.д. Чтобы вернуть русскую математическую традицию
+% в русской работе, замените \iffalse на \ifnum\value{thesislang}=1\else.
+% Standard LaTeX math in both modes (italic Greek, \le/\ge, \tan, ...). To restore
+% the Russian math conventions in the Russian thesis, replace \iffalse below with
+% \ifnum\value{thesislang}=1\else.
+\iffalse
 %%% Русская традиция начертания математических знаков
 \renewcommand{\le}{\ensuremath{\leqslant}}
 \renewcommand{\leq}{\ensuremath{\leqslant}}

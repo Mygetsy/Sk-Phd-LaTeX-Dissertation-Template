@@ -1,9 +1,11 @@
 % ---------------------------------------------------------------------------
 % Пример второй главы / Example chapter 2.
 % Демонстрирует систему уравнений с подбрекетами (\myunderbrace), таблицу и
-% рисунок. Математические команды определены в Dissertation/userpackages.tex.
+% рисунки с подписями осей через окружение picture. Математические команды
+% определены в Dissertation/userpackages.tex.
 % Demonstrates a system of equations with under-braces (\myunderbrace), a table
-% and a figure. The math commands are defined in Dissertation/userpackages.tex.
+% and figures whose axes/legend are labelled with a picture overlay. The math
+% commands are defined in Dissertation/userpackages.tex.
 % ---------------------------------------------------------------------------
 \chapter{\fixme{Mathematical model}}
 \label{ch:model}
@@ -86,72 +88,21 @@ Table~\ref{tab:properties}.
 \section{Numerical illustration}
 \label{sec:numerical-illustration}
 
-A diagram drawn directly in \LaTeX{} with \textsf{TikZ} (its axes labelled with
-math) is shown in Figure~\ref{fig:enthalpy-explanation}: the specific enthalpy
-$h$ along the coordinate $x$ between the nodes $x_l$ and $x_r$.
+The melt-front position $X$ over time is shown in Figure~\ref{fig:X_t_plots}. The
+plot is included from \texttt{pictures/}, and its axis titles are overlaid in
+\LaTeX{} with a \texttt{picture} environment (units via \verb!\axissi!).
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[>=latex', scale=2.0]
-        \def\xmax{3.4}
-        \def\xstart{0.5}
-        \def\ystart{0.5}
-
-        \coordinate (A) at (\xstart,\ystart+0.25);
-        \coordinate (L) at (\xstart+0.5,\ystart+1.25/2);
-        \coordinate (LX) at (\xstart+0.5,0);
-        \coordinate (LH) at (0,\ystart+1.25/2);
-        \coordinate (B) at (\xstart+1,\ystart+1);
-        \coordinate (BX) at (\xstart+1,0);
-        \coordinate (BH) at (0,\ystart+1);
-        \coordinate (M) at (\xstart+1.5,\ystart+1.5);
-        \coordinate (MX) at (\xstart+1.5,0);
-        \coordinate (MH) at (0,\ystart+1.5);
-        \coordinate (C) at (\xstart+2,\ystart+2);
-        \coordinate (CX) at (\xstart+2,0);
-        \coordinate (CH) at (0,\ystart+2);
-        \coordinate (R) at (\xstart+5/2*1.1,\ystart+4.5/2*1.05);
-        \coordinate (RX) at (\xstart+5/2*1.1,0);
-        \coordinate (RH) at (0,\ystart+4.5/2*1.05);
-        \coordinate (D) at (\xstart+3,\ystart+2.5);
-
-        % AXES --- labelled in LaTeX math
-        \draw[->,thick] (0,0) -- (0,\xmax+0.2) node[left=0] {$h$};
-        \draw[->,thick] (0,0) -- (\xmax+0.2,0) node[below=0] {$x$};
-
-        % Lines
-        \draw[thick,dashed] (A) -- (B);
-        \draw[thick]        (B) -- (C);
-        \draw[thick,dashed] (C) -- (D);
-        \draw[thick,dashed] (L) -- (LX);
-        \draw[thick,dashed] (R) -- (RX);
-        \draw[thick,dashed] (B) -- (BX);
-        \draw[thick,dashed] (B) -- (BH);
-        \draw[thick,dashed] (M) -- (MX);
-        \draw[thick,dashed] (M) -- (MH);
-        \draw[thick,dashed] (C) -- (CX);
-        \draw[thick,dashed] (C) -- (CH);
-        \draw[thick,dashed] (L) -- (LH);
-        \draw[thick,dashed] (R) -- (RH);
-
-        \fill[black] (B) circle(0.04);
-        \fill[black] (BH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_1$};
-        \fill[black] (L) circle(0.04);
-        \node[inner sep=0.5, shift={(-0.35, 0.35)}] at (L) {$\phi = 0$};
-        \fill[black] (LX) circle(0.04) node[fill=white,inner sep=0.5,below=0.5] {$x_l$};
-        \fill[black] (LH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_l$};
-        \fill[black] (R) circle(0.04);
-        \node[inner sep=0.5, shift={(-0.35, 0.35)}] at (R) {$\phi = 1$};
-        \fill[black] (M) circle(0.04);
-        \fill[black] (MH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_m$};
-        \fill[black] (RX) circle(0.04) node[fill=white,inner sep=0.5,below=0.5] {$x_r$};
-        \fill[black] (RH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_r$};
-        \fill[black] (C) circle(0.04);
-        \fill[black] (CH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_2$};
-    \end{tikzpicture}
-    \caption{\fixme{Specific enthalpy $h$ at the nodes $x_l$, $x_r$ and in the
-    region between them, illustrating the liquid volume fraction $\phi$.}}
-    \label{fig:enthalpy-explanation}
+    \begin{picture}(230, 250)
+        \put(10, 10){\includegraphics[width=0.45\textwidth]{pictures/X_t_plots_with_mesh_erf_liq_den_den_change_low}}
+        \put(90, 240){sigmoid-based $\phi$}
+        \put(110, 5){time $\axissi{\s}$}
+        \put(0, 80){\rotatebox{90}{position $X\; \axissi{\m}$}}
+    \end{picture}
+    \caption{\fixme{Melt-front position $X$ versus time for a sigmoid-based liquid
+    volume fraction $\phi$; the axis titles are added in \LaTeX{}.}}
+    \label{fig:X_t_plots}
 \end{figure}
 
 \section{Solidification shrinkage}
@@ -159,12 +110,36 @@ $h$ along the coordinate $x$ between the nodes $x_l$ and $x_r$.
 
 \fixme{Discuss the effect of solidification shrinkage on the free surface.}
 Figure~\ref{fig:solidification-shrinkage} shows the melt-pool shape at different
-time instants during solidification for several density models.
+time instants during solidification for several density models. The legend, time
+labels and row markers are overlaid in \LaTeX{} with a \texttt{picture}
+environment.
 
 \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.9\linewidth]{pictures/ver_sol_diff_density}
-  \caption{\fixme{Solidification of the melt pool at different time instants for
-  several density models, illustrating volumetric shrinkage.}}
-  \label{fig:solidification-shrinkage}
+    \centering
+    \begin{picture}(400, 430)
+    \put(-4, 10){
+        \put(0, 10){\includegraphics[width=1.0\linewidth]{pictures/ver_sol_diff_density}}
+        \put(115, 395){ -- \quad
+            \begin{tabular}{@{}c@{}} molten \\ metal \end{tabular}%
+        }
+        \put(240, 395){ -- \quad
+            \begin{tabular}{@{}c@{}} solidified \\ metal \end{tabular}%
+        }
+        \put(390, 395){ -- \quad gas}
+
+        \put(60, 1){\makebox(0,0)[c]{ $t = 0.05\;\pictsi{\s}$}}
+        \put(190, 1){\makebox(0,0)[c]{ $t = 0.15\;\pictsi{\s}$}}
+        \put(320, 1){\makebox(0,0)[c]{ $t = 0.20\;\pictsi{\s}$}}
+        \put(450, 1){\makebox(0,0)[c]{ $t = 0.5\;\pictsi{\s}$}}
+
+        \put(-20, 370){(a)}
+        \put(-20, 240){(b)}
+        \put(-20, 110){(c)}
+    }
+    \end{picture}
+    \caption{\fixme{Vertical solidification of the melt pool at different times for
+    several density scenarios: (a) equal constant densities $\rho_\liq =
+    \rho_\sol$; (b) different constant densities $\rho_\liq \ne \rho_\sol$; (c)
+    temperature-dependent liquid density $\rho_\liq(T)$ and constant $\rho_\sol$.}}
+    \label{fig:solidification-shrinkage}
 \end{figure}

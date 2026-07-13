@@ -83,17 +83,88 @@ Table~\ref{tab:properties}.
   \label{tab:properties}
 \end{table}
 
+\section{Numerical illustration}
+\label{sec:numerical-illustration}
+
+A diagram drawn directly in \LaTeX{} with \textsf{TikZ} (its axes labelled with
+math) is shown in Figure~\ref{fig:enthalpy-explanation}: the specific enthalpy
+$h$ along the coordinate $x$ between the nodes $x_l$ and $x_r$.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=latex', scale=2.0]
+        \def\xmax{3.4}
+        \def\xstart{0.5}
+        \def\ystart{0.5}
+
+        \coordinate (A) at (\xstart,\ystart+0.25);
+        \coordinate (L) at (\xstart+0.5,\ystart+1.25/2);
+        \coordinate (LX) at (\xstart+0.5,0);
+        \coordinate (LH) at (0,\ystart+1.25/2);
+        \coordinate (B) at (\xstart+1,\ystart+1);
+        \coordinate (BX) at (\xstart+1,0);
+        \coordinate (BH) at (0,\ystart+1);
+        \coordinate (M) at (\xstart+1.5,\ystart+1.5);
+        \coordinate (MX) at (\xstart+1.5,0);
+        \coordinate (MH) at (0,\ystart+1.5);
+        \coordinate (C) at (\xstart+2,\ystart+2);
+        \coordinate (CX) at (\xstart+2,0);
+        \coordinate (CH) at (0,\ystart+2);
+        \coordinate (R) at (\xstart+5/2*1.1,\ystart+4.5/2*1.05);
+        \coordinate (RX) at (\xstart+5/2*1.1,0);
+        \coordinate (RH) at (0,\ystart+4.5/2*1.05);
+        \coordinate (D) at (\xstart+3,\ystart+2.5);
+
+        % AXES --- labelled in LaTeX math
+        \draw[->,thick] (0,0) -- (0,\xmax+0.2) node[left=0] {$h$};
+        \draw[->,thick] (0,0) -- (\xmax+0.2,0) node[below=0] {$x$};
+
+        % Lines
+        \draw[thick,dashed] (A) -- (B);
+        \draw[thick]        (B) -- (C);
+        \draw[thick,dashed] (C) -- (D);
+        \draw[thick,dashed] (L) -- (LX);
+        \draw[thick,dashed] (R) -- (RX);
+        \draw[thick,dashed] (B) -- (BX);
+        \draw[thick,dashed] (B) -- (BH);
+        \draw[thick,dashed] (M) -- (MX);
+        \draw[thick,dashed] (M) -- (MH);
+        \draw[thick,dashed] (C) -- (CX);
+        \draw[thick,dashed] (C) -- (CH);
+        \draw[thick,dashed] (L) -- (LH);
+        \draw[thick,dashed] (R) -- (RH);
+
+        \fill[black] (B) circle(0.04);
+        \fill[black] (BH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_1$};
+        \fill[black] (L) circle(0.04);
+        \node[inner sep=0.5, shift={(-0.35, 0.35)}] at (L) {$\phi = 0$};
+        \fill[black] (LX) circle(0.04) node[fill=white,inner sep=0.5,below=0.5] {$x_l$};
+        \fill[black] (LH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_l$};
+        \fill[black] (R) circle(0.04);
+        \node[inner sep=0.5, shift={(-0.35, 0.35)}] at (R) {$\phi = 1$};
+        \fill[black] (M) circle(0.04);
+        \fill[black] (MH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_m$};
+        \fill[black] (RX) circle(0.04) node[fill=white,inner sep=0.5,below=0.5] {$x_r$};
+        \fill[black] (RH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_r$};
+        \fill[black] (C) circle(0.04);
+        \fill[black] (CH) circle(0.04) node[fill=white,inner sep=0.5,left=0.5] {$h_2$};
+    \end{tikzpicture}
+    \caption{\fixme{Specific enthalpy $h$ at the nodes $x_l$, $x_r$ and in the
+    region between them, illustrating the liquid volume fraction $\phi$.}}
+    \label{fig:enthalpy-explanation}
+\end{figure}
+
 \section{Solidification shrinkage}
 \label{sec:solidification}
 
 \fixme{Discuss the effect of solidification shrinkage on the free surface.}
 Figure~\ref{fig:solidification-shrinkage} shows the melt-pool shape at different
-time instants during solidification.
+time instants during solidification for several density models.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.9\linewidth]{pictures/solidification-shrinkage}
-  \caption{\fixme{Solidification of the melt pool at different time instants,
-  illustrating volumetric shrinkage.}}
+  \includegraphics[width=0.9\linewidth]{pictures/ver_sol_diff_density}
+  \caption{\fixme{Solidification of the melt pool at different time instants for
+  several density models, illustrating volumetric shrinkage.}}
   \label{fig:solidification-shrinkage}
 \end{figure}

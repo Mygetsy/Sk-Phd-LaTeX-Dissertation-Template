@@ -10,6 +10,38 @@
 % Русская традиция начертания греческих букв
 \usepackage{upgreek} % прямые греческие ради русской традиции
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Математические команды для формул (пример --- глава part2) %%%%%%%%%%%%%%%%
+%%% Math commands used by the example equations (see chapter part2).
+\usepackage{physics}   % \grad \div \vdot \pdv \dv \qty \vb \vu \otimes ...
+\usepackage{isomath}   % \tensorsym \matrixsym \vectorsym
+
+% \myunderbrace{formula}{label1\\label2\\...} --- подбрекеты с подписями
+% underbrace with one or more stacked text labels
+\NewDocumentCommand{\myunderbracetext}{m}{\text{#1}\\} % for internal use
+\NewDocumentCommand\myunderbrace{ O{\int} m >{\SplitList{\\}}m }{%
+    \underbrace{\vphantom{#1}#2}_{\substack{\ProcessList{#3}{\myunderbracetext}}}%
+}
+
+% Индексы фаз и обозначения / phase subscripts and notation
+\newcommand{\sol}{\text{S}}      % solid
+\newcommand{\liq}{\text{L}}      % liquid
+\newcommand{\gas}{\text{G}}      % gas
+\newcommand{\melt}{\text{m}}     % melt
+\newcommand{\fus}{\text{fus}}    % fusion
+\newcommand{\laser}{\ell}        % laser
+\newcommand{\tran}{\mathsf{T}}   % transpose
+\providecommand{\cp}{\vdot}      % dot contraction (may already be defined)
+\newcommand{\mysi}[1]{\si[per-mode=reciprocal]{#1}} % единицы СИ / SI units
+
+% Жирные векторы и тензоры / bold vectors and tensors
+\newcommand{\bv}{\vb*{v}}
+\newcommand{\bn}{\vu*{n}}
+\newcommand{\bg}{\vb*{g}}
+\newcommand{\btau}{\tensorsym{\tau}}
+\newcommand{\bI}{\matrixsym{I}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%% Микротипографика
 %\ifnumequal{\value{draft}}{0}{% Только если у нас режим чистовика
 %    \usepackage[final, babel, shrink=45]{microtype}[2016/05/14] % улучшает представление букв и слов в строках, может помочь при наличии отдельно висящих слов

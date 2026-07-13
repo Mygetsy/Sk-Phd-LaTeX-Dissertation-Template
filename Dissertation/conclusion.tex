@@ -12,9 +12,30 @@
 %% 9.2.3 В заключении автореферата диссертации излагают итоги данного
 %% исследования. Поэтому эту часть делают общей и загружают из одного файла
 %% и~в~автореферат, и~в~диссертацию:
+%
+% Guide (Vasilyev): the conclusion must be aligned with the goals and the main
+% results submitted for the defense --- not a repetition of the introduction.
+% After a short opening paragraph, list the main results (in the same order as
+% the "main results submitted for the defense"), then discuss limitations and
+% future directions, and finally place the acknowledgements (a separate file).
 \ifnum\value{thesislang}=1
-The main results of the work are as follows.
+\fixme{This dissertation addressed the problem of \dots{} The main goal was to
+\dots, and its key novelty lies in \dots}
+
+\noindent The main results of the dissertation are:
 \else
 Основные результаты работы заключаются в следующем.
 \fi
 \input{common/concl}
+
+% Ограничения и перспективы дальнейшей разработки темы / limitations and future work
+\ifnum\value{thesislang}=1
+\fixme{The \dots{} developed in this dissertation is a promising direction in
+\dots, further development of which would contribute to progress in \dots}
+
+\noindent The most promising directions for further development of the research
+are:
+\begin{itemize}
+  \item \fixme{\dots}
+\end{itemize}
+\fi

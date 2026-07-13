@@ -6,23 +6,27 @@
   \addcontentsline{toc}{chapter}{Введение}%   % Добавляем его в оглавление
 }
 
-\newcommand{\actuality}{\textbf{\actualityTXT}}
-\newcommand{\actualityandprogress}{\textbf{\actualityandprogressTXT}}
+% Заголовки структурных элементов --- подчёркнутые и полужирные (как в
+% автореферате). Слово «goal» внутри предложения --- только полужирное.
+% Section labels are underlined + bold (as in the synopsis); the inline word
+% "goal" is bold only (not underlined).
+\newcommand{\actuality}{\underline{\textbf{\actualityTXT}}}
+\newcommand{\actualityandprogress}{\underline{\textbf{\actualityandprogressTXT}}}
 \newcommand{\progress}{}
-\newcommand{\goalsproblems}{\textbf{\goalsproblemsTXT}}
+\newcommand{\goalsproblems}{\underline{\textbf{\goalsproblemsTXT}}}
 \newcommand{\goal}{\textbf{\goalTXT}}
-\newcommand{\aim}{{\textbf\aimTXT}}
-\newcommand{\tasks}{\textbf{\tasksTXT}}
-\newcommand{\novelty}{\textbf{\noveltyTXT}}
-\newcommand{\influence}{\textbf{\influenceTXT}}
-\newcommand{\theoreticalsignificance}{\textbf{\theoreticalsignificanceTXT}}
-\newcommand{\practicalsignificance}{\textbf{\practicalsignificanceTXT}}
-\newcommand{\methods}{\textbf{\methodsTXT}}
-\newcommand{\defpositions}{\textbf{\defpositionsTXT}}
-\newcommand{\reliability}{\textbf{\reliabilityTXT}}
-\newcommand{\probation}{\textbf{\probationTXT}}
-\newcommand{\contribution}{\textbf{\contributionTXT}}
-\newcommand{\publications}{\textbf{\publicationsTXT}}
+\newcommand{\aim}{\underline{\textbf{\aimTXT}}}
+\newcommand{\tasks}{\underline{\textbf{\tasksTXT}}}
+\newcommand{\novelty}{\underline{\textbf{\noveltyTXT}}}
+\newcommand{\influence}{\underline{\textbf{\influenceTXT}}}
+\newcommand{\theoreticalsignificance}{\underline{\textbf{\theoreticalsignificanceTXT}}}
+\newcommand{\practicalsignificance}{\underline{\textbf{\practicalsignificanceTXT}}}
+\newcommand{\methods}{\underline{\textbf{\methodsTXT}}}
+\newcommand{\defpositions}{\underline{\textbf{\defpositionsTXT}}}
+\newcommand{\reliability}{\underline{\textbf{\reliabilityTXT}}}
+\newcommand{\probation}{\underline{\textbf{\probationTXT}}}
+\newcommand{\contribution}{\underline{\textbf{\contributionTXT}}}
+\newcommand{\publications}{\underline{\textbf{\publicationsTXT}}}
 
 \input{common/characteristic} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
 

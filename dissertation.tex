@@ -52,13 +52,32 @@
 \begin{document}
 %%% Переопределение именований типовых разделов
 % https://tex.stackexchange.com/a/156050
-\gappto\captionsrussian{\input{common/renames}} % for polyglossia and babel
+% Имена привязываем к главному языку работы (русский или английский),
+% содержимое renames.tex само выбирает язык по счётчику thesislang.
+\ifnumequal{\value{thesislang}}{1}{%
+  \gappto\captionsenglish{\input{common/renames}}% for polyglossia and babel
+  \gappto\captionsenglish{\input{Dissertation/renames}}%
+}{%
+  \gappto\captionsrussian{\input{common/renames}}% for polyglossia and babel
+  \gappto\captionsrussian{\input{Dissertation/renames}}%
+}
 \input{common/renames}
-\gappto\captionsrussian{\input{Dissertation/renames}} % for polyglossia and babel
 \input{Dissertation/renames}
 
 %%% Структура диссертации (ГОСТ Р 7.0.11-2011, 4)
-\include{Dissertation/title}           % Титульный лист
+% Обязательный русский титульный лист --- в обеих версиях (русской и английской).
+% ВАЖНО: \include нельзя помещать в аргумент \ifnumequal, поэтому используем
+% примитивный \ifnum...\fi (иначе \include ломает вёрстку и переключение языка).
+\ifnum\value{thesislang}=1 \selectlanguage{russian}\fi
+\include{Dissertation/title_rus}       % 1. Русский титульный лист
+\ifnum\value{thesislang}=1
+  \selectlanguage{english}%
+  \include{Dissertation/title}         % 2. Английский титульный лист
+  \selectlanguage{russian}%
+  \include{Dissertation/abstract_rus}  % 3. Русская аннотация
+  \selectlanguage{english}%
+  \include{Dissertation/abstract}      % 4. Английская аннотация
+\fi
 \include{Dissertation/contents}        % Оглавление
 \ifnumequal{\value{contnumfig}}{1}{}{\counterwithout{figure}{chapter}}
 \ifnumequal{\value{contnumtab}}{1}{}{\counterwithout{table}{chapter}}
@@ -67,10 +86,14 @@
 }{\counterwithin{figure}{chapter}}
 \ifnumequal{\value{contnumtab}}{1}{\counterwithout{table}{chapter}
 }{\counterwithin{table}{chapter}}
-\include{Dissertation/part1}           % Глава 1
-\include{Dissertation/part2}           % Глава 2
-\include{Dissertation/part3}           % Глава 3
-\include{Dissertation/conclusion}      % Заключение
+% Каждая глава --- отдельная папка Dissertation/partN/ с файлом partN.tex и
+% папкой pictures/. Each chapter is a folder Dissertation/partN/ with partN.tex
+% and a pictures/ subfolder. Copy part1/ to add more chapters.
+\subimport{Dissertation/part1/}{part1} % Глава 1 (пример) / example chapter
+\subimport{Dissertation/part2/}{part2} % Глава 2 (пример) / example chapter
+%\subimport{Dissertation/part3/}{part3} % Глава 3
+\include{Dissertation/conclusion}      % Заключение / Conclusion
+\include{Dissertation/acknowledgements}% Благодарности / Acknowledgements
 \include{Dissertation/acronyms}        % Список сокращений и условных обозначений
 \include{Dissertation/dictionary}      % Словарь терминов
 \include{Dissertation/references}      % Список литературы
@@ -83,7 +106,12 @@
 % Оформление заголовков приложений ближе к ГОСТ:
 \setlength{\midchapskip}{20pt}
 \renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
-\renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
+% Приложения: русскими буквами (русская работа) или латинскими (английская).
+\ifnum\value{thesislang}=1
+  \renewcommand\thechapter{\Alph{chapter}}%
+\else
+  \renewcommand\thechapter{\Asbuk{chapter}}% Чтобы приложения русскими буквами нумеровались
+\fi
 
 \include{Dissertation/appendix}        % Приложения
 

@@ -1,7 +1,111 @@
+% Общая характеристика работы --- двуязычная (переключатель thesislang).
+% Используем примитивный \ifnum...\else...\fi, чтобы не ломать \verb внутри.
+\ifnum\value{thesislang}=1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% English placeholder %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The guidance in the comments below is adapted from O.\,V.~Vasilyev,
+% "Preparing a Dissertation for the Degree of Candidate of Sciences:
+% a 10-Minute Guide" (Skoltech). The comments (%) do not appear in the PDF ---
+% they are here to help you write each section. Replace every \fixme{...}.
 
+% A brief literature review focused on the *significance* of the research area:
+% recent progress, impact on science and/or industry. Discuss what is already
+% addressed (with references) and highlight what is not (or only partially)
+% addressed, then articulate why now is the right time for this research and how
+% it fits the field's agenda.
+{\actualityandprogress} \fixme{Introduce the topic, its relevance and the place of
+this work in the field. You may cite other works with \autocite{Panov2025}.}
+
+% The goal must be *concrete* --- to develop a theory / model / methodology, to
+% demonstrate the applicability of one, etc. "To study ..." is NOT a goal.
+% Note: "цели и задачи" = "goals and problems addressed" (not "aims/objectives/
+% tasks"). Problems are specific (technical, theoretical, experimental) and are
+% distinct from the broader "main results submitted for the defense" below.
+{\goalsproblems} The {\goal} of this dissertation is to \fixme{develop \dots}
+
+To achieve the goal of the dissertation, the following {\tasks} are addressed:
+\begin{enumerate}
+  \item \fixme{To develop a \dots{} (model, method, methodology, \dots).}
+  \item \fixme{To verify and validate the developed \dots{} against \dots}
+  \item \fixme{To apply the developed \dots{} to \dots}
+\end{enumerate}
+
+% Focus on what is *novel*, not on the problems solved: a new model for an
+% unstudied behaviour, new regimes described, a theory generalized, etc.
+% Useful phrasings:
+%   - The thesis presents a fundamentally new (method, approach, ...) with unique
+%     properties that distinguish it from all known ...
+%   - The dissertation also presents the novel (model, method, theory, ...)
+%     developed by the author ...
+%   - The author's groundbreaking results also include ...
+{\novelty}
+\begin{enumerate}
+  \item \fixme{The thesis presents a fundamentally new \dots{} with unique
+  properties that distinguish it from all known \dots}
+  \item \fixme{The dissertation also presents the novel \dots{} developed by the
+  author.}
+  \item \fixme{The author's groundbreaking results also include \dots}
+\end{enumerate}
+
+% Which results have theoretical and/or practical significance, and why. If a
+% new approach founds a research direction, say how it may develop; if results
+% apply to other fields, list them; explain the significance in plain terms.
+{\theoreticalsignificance} \fixme{of the results of the dissertation lies in the
+development of \dots{} which lays the foundation for \dots}
+
+{\practicalsignificance} \fixme{of this study lies in \dots{}, which enables
+\dots}
+
+% Focus on the *tools* --- methods, theories, approaches, experimental
+% procedures or facilities the research is based on or used to verify/validate
+% the results --- NOT on the author's achievements.
+{\methods}
+\fixme{The study is based on \dots{} (methods, theories, approaches). The results
+are verified/validated using \dots{} (experimental procedures or facilities).}
+
+% Of primary importance: these are read verbatim at the defense and the defense
+% presentation is built around them. Distinct from "goals and problems": the
+% main results are grandiose and assessable (a model/theory developed, a theorem
+% proved, a method proposed, a phenomenon discovered) and must be unique to you.
+{\defpositions}
+\begin{enumerate}
+  \item \fixme{A \dots{} is developed (a model/theory developed, a theorem
+  proved, a method proposed, a new phenomenon discovered, \dots).}
+  \item \fixme{\dots}
+\end{enumerate}
+
+% Clarify your contribution to each paper/chapter the dissertation is based on,
+% especially for multi-author papers; substantiate its nature and, where
+% applicable, emphasize that it is defining. Write in the third person.
+{\contribution} \fixme{The author had a decisive contribution to \dots}
+
+% Validation is broader than "simulation vs. experiment" --- include
+% reproducibility, detailed method descriptions, agreement with published
+% results, etc. Typical opening: "The validity of the results of the
+% dissertation is confirmed by the following."
+{\reliability} \fixme{The validity of the results of the dissertation is confirmed
+by the following: the developed methods are described in detail in \dots; they are
+implemented in \dots; the results are in agreement with published experimental
+and/or computational results obtained by \dots}
+
+% List the conferences/venues where the results were presented (and, together
+% with {\publications} below, the publications). May be merged with validity.
+{\probation} The main results of the work were presented~at:
+\begin{itemize}
+  \item \fixme{Conference name, year, city, country.}
+\end{itemize}
+
+% Suggested phrasing: "The main results on the topic of the dissertation are
+% presented in N publications, M of which in journals indexed by Web of Science
+% or Scopus, K in conference abstracts."
+{\publications} \fixme{The main results on the topic of the dissertation are
+presented in N~publications, M~of which in journals indexed by Web of Science or
+Scopus, and K~in conference abstracts.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\else
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Русский вариант %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\actuality} Обзор, введение в тему, обозначение места данной работы в
 мировых исследованиях и~т.\:п., можно использовать ссылки на~другие
-работы~\autocite{Gosele1999161,Lermontov}
+работы~\autocite{Panov2025}
 (если их~нет, то~в~автореферате
 автоматически пропадёт раздел <<Список литературы>>). Внимание! Ссылки
 на~другие работы в~разделе общей характеристики работы можно
@@ -13,7 +117,7 @@
 файле два списка литературы).
 При использовании \verb!biblatex! возможно использование исключительно
 в~автореферате подстрочных ссылок
-для других работ командой \verb!\autocite!~\autocite{Marketing}, а~также цитирование
+для других работ командой \verb!\autocite!~\autocite{Panov2025}, а~также цитирование
 собственных работ командой \verb!\cite!. Для этого в~файле
 \verb!common/setup.tex! необходимо присвоить положительное значение
 счётчику \verb!\setcounter{usefootcite}{1}!.
@@ -164,11 +268,9 @@
         % Процитированные здесь работы:
         %  * попадают в авторскую библиографию, при usefootcite==0 и стиле `\insertbiblioauthorimportant`.
         %  * ни на что не влияют в противном случае
-        \nocite{vakbib2}%vak
-        \nocite{patbib1}%patent
-        \nocite{progbib1}%program
-        \nocite{bib1}%other
-        \nocite{confbib1}%conf
+        % Примеры для стиля \insertbiblioauthorimportant. Впишите сюда ключи
+        % своих работ из biblio/author.bib (пример --- Panov2025):
+        \nocite{Panov2025}%
     \end{refsection}%
         %
         % Всё, что вне этих двух refsection, это refsection=0,
@@ -209,3 +311,5 @@
 Для добавления в список публикаций автора работ, которые не были процитированы в
 автореферате, требуется их~перечислить с использованием команды \verb!\nocite! в
 \verb!Synopsis/content.tex!.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi

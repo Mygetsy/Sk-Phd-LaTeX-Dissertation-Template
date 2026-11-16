@@ -3,47 +3,88 @@
 % 9.2 Оформление текста автореферата диссертации
 % 9.2.1 Общая характеристика работы включает в себя следующие основные структурные
 % элементы:
-% актуальность темы исследования;
-\newcommand{\actualityTXT}{Актуальность темы.}
-% степень ее разработанности;
-\newcommand{\progressTXT}{Степень разработанности темы.}
-% цели и задачи;
-\newcommand{\aimTXT}{Целью}
-\newcommand{\tasksTXT}{задачи}
-% научную новизну;
-\newcommand{\noveltyTXT}{Научная новизна:}
-% теоретическую и практическую значимость работы;
-%\newcommand{\influenceTXT}{Теоретическая и практическая значимость}
-% или чаще используют просто
-\newcommand{\influenceTXT}{Практическая значимость}
-% методологию и методы исследования;
-\newcommand{\methodsTXT}{Методология и методы исследования.}
-% положения, выносимые на защиту;
-\newcommand{\defpositionsTXT}{Основные положения, выносимые на~защиту:}
-% степень достоверности и апробацию результатов.
-\newcommand{\reliabilityTXT}{Достоверность}
-\newcommand{\probationTXT}{Апробация работы.}
-
-\newcommand{\contributionTXT}{Личный вклад.}
-\newcommand{\publicationsTXT}{Публикации.}
+% Названия структурных элементов общей характеристики работы --- на языке
+% работы. Names of the "general characteristics" elements, in the thesis language.
+\ifnumequal{\value{thesislang}}{1}{% English thesis (naming follows the PhD dissertation)
+  \newcommand{\actualityTXT}{The relevance of the research area.}
+  \newcommand{\progressTXT}{The degree of its development.}
+  \newcommand{\actualityandprogressTXT}{The relevance of the research area and degree of its development.}
+  \newcommand{\goalsproblemsTXT}{Goals and problems addressed.}
+  \newcommand{\goalTXT}{goal}
+  \newcommand{\aimTXT}{The aim}
+  \newcommand{\tasksTXT}{problems}
+  \newcommand{\noveltyTXT}{Scientific novelty:}
+  \newcommand{\influenceTXT}{Theoretical and practical significance.}
+  \newcommand{\theoreticalsignificanceTXT}{Theoretical significance}
+  \newcommand{\practicalsignificanceTXT}{Practical significance}
+  \newcommand{\methodsTXT}{Methodology and research methods.}
+  \newcommand{\defpositionsTXT}{Main results submitted for the defense:}
+  \newcommand{\reliabilityTXT}{Validity of the obtained results.}
+  \newcommand{\probationTXT}{Approbation.}
+  \newcommand{\contributionTXT}{Personal contribution of the author.}
+  \newcommand{\publicationsTXT}{Publications.}
+}{% Russian thesis
+  % актуальность темы исследования;
+  \newcommand{\actualityTXT}{Актуальность темы.}
+  % степень ее разработанности;
+  \newcommand{\progressTXT}{Степень разработанности темы.}
+  \newcommand{\actualityandprogressTXT}{Актуальность темы и степень её разработанности.}
+  \newcommand{\goalsproblemsTXT}{Цели и задачи.}
+  \newcommand{\goalTXT}{целью}
+  % цели и задачи;
+  \newcommand{\aimTXT}{Целью}
+  \newcommand{\tasksTXT}{задачи}
+  % научную новизну;
+  \newcommand{\noveltyTXT}{Научная новизна:}
+  % теоретическую и практическую значимость работы;
+  % или чаще используют просто
+  \newcommand{\influenceTXT}{Практическая значимость}
+  \newcommand{\theoreticalsignificanceTXT}{Теоретическая значимость}
+  \newcommand{\practicalsignificanceTXT}{Практическая значимость}
+  % методологию и методы исследования;
+  \newcommand{\methodsTXT}{Методология и методы исследования.}
+  % положения, выносимые на защиту;
+  \newcommand{\defpositionsTXT}{Основные положения, выносимые на~защиту:}
+  % степень достоверности и апробацию результатов.
+  \newcommand{\reliabilityTXT}{Достоверность}
+  \newcommand{\probationTXT}{Апробация работы.}
+  \newcommand{\contributionTXT}{Личный вклад.}
+  \newcommand{\publicationsTXT}{Публикации.}
+}
 
 
 %%% Заголовки библиографии:
 
-% для автореферата:
-\newcommand{\bibtitleauthor}{Публикации автора по теме диссертации}
-
-% для стиля библиографии `\insertbiblioauthorgrouped`
-\newcommand{\bibtitleauthorvak}{В изданиях из списка ВАК РФ}
-\newcommand{\bibtitleauthorscopus}{В изданиях, входящих в международную базу цитирования Scopus}
-\newcommand{\bibtitleauthorwos}{В изданиях, входящих в международную базу цитирования Web of Science}
-\newcommand{\bibtitleauthorother}{В прочих изданиях}
-\newcommand{\bibtitleauthorconf}{В сборниках трудов конференций}
-\newcommand{\bibtitleauthorpatent}{Зарегистрированные патенты}
-\newcommand{\bibtitleauthorprogram}{Зарегистрированные программы для ЭВМ}
+\ifnumequal{\value{thesislang}}{1}{% English thesis
+  % для автореферата:
+  \newcommand{\bibtitleauthor}{Publications of the author on the subject of the dissertation}
+  % для стиля библиографии `\insertbiblioauthorgrouped`
+  \newcommand{\bibtitleauthorvak}{In journals from the list of the Higher Attestation Commission}
+  \newcommand{\bibtitleauthorscopus}{In journals indexed by Scopus}
+  \newcommand{\bibtitleauthorwos}{In journals indexed by Web of Science}
+  \newcommand{\bibtitleauthorother}{In other publications}
+  \newcommand{\bibtitleauthorconf}{In conference proceedings}
+  \newcommand{\bibtitleauthorpatent}{Registered patents}
+  \newcommand{\bibtitleauthorprogram}{Registered computer programs}
+}{% Russian thesis
+  % для автореферата:
+  \newcommand{\bibtitleauthor}{Публикации автора по теме диссертации}
+  % для стиля библиографии `\insertbiblioauthorgrouped`
+  \newcommand{\bibtitleauthorvak}{В изданиях из списка ВАК РФ}
+  \newcommand{\bibtitleauthorscopus}{В изданиях, входящих в международную базу цитирования Scopus}
+  \newcommand{\bibtitleauthorwos}{В изданиях, входящих в международную базу цитирования Web of Science}
+  \newcommand{\bibtitleauthorother}{В прочих изданиях}
+  \newcommand{\bibtitleauthorconf}{В сборниках трудов конференций}
+  \newcommand{\bibtitleauthorpatent}{Зарегистрированные патенты}
+  \newcommand{\bibtitleauthorprogram}{Зарегистрированные программы для ЭВМ}
+}
 
 % для стиля библиографии `\insertbiblioauthorimportant`:
 \newcommand{\bibtitleauthorimportant}{Наиболее значимые \protect\MakeLowercase\bibtitleauthor}
 
 % для списка литературы в диссертации и списка чужих работ в автореферате:
-\newcommand{\bibtitlefull}{Список литературы} % (ГОСТ Р 7.0.11-2011, 4)
+\ifnumequal{\value{thesislang}}{1}{%
+  \newcommand{\bibtitlefull}{References}%
+}{%
+  \newcommand{\bibtitlefull}{Список литературы} % (ГОСТ Р 7.0.11-2011, 4)
+}

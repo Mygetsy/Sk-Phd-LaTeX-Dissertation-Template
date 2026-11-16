@@ -1,0 +1,145 @@
+% ---------------------------------------------------------------------------
+% Пример второй главы / Example chapter 2.
+% Демонстрирует систему уравнений с подбрекетами (\myunderbrace), таблицу и
+% рисунки с подписями осей через окружение picture. Математические команды
+% определены в Dissertation/userpackages.tex.
+% Demonstrates a system of equations with under-braces (\myunderbrace), a table
+% and figures whose axes/legend are labelled with a picture overlay. The math
+% commands are defined in Dissertation/userpackages.tex.
+% ---------------------------------------------------------------------------
+\chapter{\fixme{Mathematical model}}
+\label{ch:model}
+
+\fixme{Introduce the mathematical model of the chapter builds upon the framework established by Panov et al.~\cite{Panov2025}.}
+
+\section{Governing equations}
+\label{sec:governing-equations}
+
+Considering the modelling assumptions, the conservation equations for mass in the
+gas and metal phases, together with momentum and energy, are formulated as
+follows:
+\begin{gather}
+  \pdv{\alpha}{t} + \div (\alpha \bv) = \div \bv,
+  \label{eq:advection_VOF}\\
+  \div \bv = - \frac{(\rho_\liq - \rho_\sol)D_t \phi
+    + \phi \dv{\rho_\liq}{T} D_t T}{\phi \rho_\liq + (1-\phi) \rho_\sol},
+  \label{eq:mass_conservation}\\
+  \begin{multlined}
+    \pdv{\rho\bv}{t}
+    + \div (\rho \bv \otimes \bv)
+    = - \grad p
+    + \grad \vdot \btau
+    + \myunderbrace{\rho \bg}{gravity}
+    - \myunderbrace{K\alpha\frac{(\alpha-\phi)^2}{\phi^2 + \epsilon}\bv}{Brinkman penalization} \\
+    - \myunderbrace{\gamma\qty(\div\bn_\alpha)\grad\alpha}{surface tension}
+    + \myunderbrace{\dv{\gamma}{T}\Bigl(\bn_\alpha\cp\grad{T}\cp\bn_\alpha\Bigr)|\grad \alpha|}{Marangoni force},
+    \label{eq:momentum_conservation}
+  \end{multlined}\\
+  \pdv{\rho h}{t}
+  + \div (\rho \bv h)
+  = \div (k \grad{T})
+  + \myunderbrace{a_\laser I_{\laser} \max(0, \bn_\laser \vdot \grad \alpha)}{laser heat source},
+  \label{eq:h_eq}
+\end{gather}
+where $\bv$ is the velocity of the mixture, $p$ is the dynamic pressure,
+$\btau = \mu [\grad \bv + (\grad \bv)^\tran] - \frac{2}{3}\mu(\div \bv)\bI$ is the
+viscous stress tensor, $\bg$ is the gravitational acceleration, $\gamma$ is the
+surface tension, $k$ is the thermal conductivity, $I_{\laser}$ is the laser beam
+intensity with absorption coefficient $a_\laser$, $\bn_\laser$ is the laser beam
+direction, and $D_t \equiv \pdv*{t} + \bv\vdot\grad$ is the material derivative.
+The momentum balance~\eqref{eq:momentum_conservation} is written with each force
+term highlighted by an under-brace.
+
+The thermophysical properties used in the model are listed in
+Table~\ref{tab:properties}.
+
+\begin{table}[htbp]
+  \caption{\fixme{Thermophysical properties of the metal and the auxiliary gas
+  phase.}}
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+  \small
+  \begin{tabular}{cccc}
+    \hline
+    Phase & Physical property & Value & Unit \\ \hline
+    \multirow{5}{*}{Liquid metal}
+        & $\rho_{\liq\melt}$ & \num{2475}   & \mysi{\kg\per\cubic\m}   \\
+        & $\beta$            & \num{-1.4e-4}& \mysi{\per\K}            \\
+        & $k_\liq$           & \num{91}     & \mysi{\W\per\m\per\K}    \\
+        & $c_{p\liq}$        & \num{1042}   & \mysi{\J\per\kg\per\K}   \\
+        & $\mu_\liq$         & \num{4.0e-5} & \mysi{\Pa\s}            \\ \hline
+    \multirow{3}{*}{Interface}
+        & $\gamma$           & \num{8.7e-1} & \mysi{\N\per\m}          \\
+        & $T_\melt$          & \num{936.6}  & \mysi{\K}               \\
+        & $h_\fus$           & \num{3.8e5}  & \mysi{\J\per\kg}         \\ \hline
+    \multirow{3}{*}{Solid metal}
+        & $\rho_\sol$        & \num{2700}   & \mysi{\kg\per\cubic\m}   \\
+        & $k_\sol$           & \num{211}    & \mysi{\W\per\m\per\K}    \\
+        & $c_{p\sol}$        & \num{910}    & \mysi{\J\per\kg\per\K}   \\ \hline
+    \multirow{4}{*}{Auxiliary gas phase}
+        & $\rho_\gas$        & \num{4.0e-1} & \mysi{\kg\per\cubic\m}   \\
+        & $\mu_\gas$         & \num{4.0e-5} & \mysi{\Pa\s}            \\
+        & $k_\gas$           & \num{6.1e-3} & \mysi{\W\per\m\per\K}    \\
+        & $c_{p\gas}$        & \num{e3}     & \mysi{\J\per\kg\per\K}   \\ \hline
+  \end{tabular}
+  \label{tab:properties}
+\end{table}
+
+\section{Numerical illustration}
+\label{sec:numerical-illustration}
+
+The melt-front position $X$ over time is shown in Figure~\ref{fig:X_t_plots}. The
+plot is included from \texttt{pictures/}, and its axis titles are overlaid in
+\LaTeX{} with a \texttt{picture} environment (units via \verb!\axissi!).
+
+\begin{figure}[htbp]
+    \centering
+    \begin{picture}(300, 250)
+        \put(10, 10){\includegraphics[width=0.45\textwidth]{pictures/X_t_plots_with_mesh_erf_liq_den_den_change_low}}
+        \put(90, 240){sigmoid-based $\phi$}
+        \put(110, 5){time $\axissi{\s}$}
+        \put(0, 80){\rotatebox{90}{position $X\; \axissi{\m}$}}
+    \end{picture}
+    \caption{\fixme{Melt-front position $X$ versus time for a sigmoid-based liquid
+    volume fraction $\phi$; the axis titles are added in \LaTeX{}.}}
+    \label{fig:X_t_plots}
+\end{figure}
+
+\section{Solidification shrinkage}
+\label{sec:solidification}
+
+\fixme{Discuss the effect of solidification shrinkage on the free surface.}
+Figure~\ref{fig:solidification-shrinkage} shows the melt-pool shape at different
+time instants during solidification for several density models. The legend, time
+labels and row markers are overlaid in \LaTeX{} with a \texttt{picture}
+environment.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{picture}(500, 430)
+    \put(-10, 10){
+        \put(0, 10){\includegraphics[width=1.0\linewidth]{pictures/ver_sol_diff_density}}
+        \put(115, 395){ -- \quad
+            \begin{tabular}{@{}c@{}} molten \\ metal \end{tabular}%
+        }
+        \put(240, 395){ -- \quad
+            \begin{tabular}{@{}c@{}} solidified \\ metal \end{tabular}%
+        }
+        \put(390, 395){ -- \quad gas}
+
+        \put(60, 1){\makebox(0,0)[c]{ $t = 0.05\;\pictsi{\s}$}}
+        \put(190, 1){\makebox(0,0)[c]{ $t = 0.15\;\pictsi{\s}$}}
+        \put(320, 1){\makebox(0,0)[c]{ $t = 0.20\;\pictsi{\s}$}}
+        \put(450, 1){\makebox(0,0)[c]{ $t = 0.5\;\pictsi{\s}$}}
+
+        \put(-20, 370){(a)}
+        \put(-20, 240){(b)}
+        \put(-20, 110){(c)}
+    }
+    \end{picture}
+    \caption{\fixme{Vertical solidification of the melt pool at different times for
+    several density scenarios: (a) equal constant densities $\rho_\liq =
+    \rho_\sol$; (b) different constant densities $\rho_\liq \ne \rho_\sol$; (c)
+    temperature-dependent liquid density $\rho_\liq(T)$ and constant $\rho_\sol$.}}
+    \label{fig:solidification-shrinkage}
+\end{figure}

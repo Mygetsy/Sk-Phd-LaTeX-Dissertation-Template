@@ -2,6 +2,23 @@
 %%%% Файл упрощённых настроек шаблона, общих для диссертации и автореферата %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%% Язык диссертации / Thesis language %%%
+% Главный переключатель шаблона. Определяет язык всего документа.
+% The template's main switch. Selects the language of the whole document.
+\makeatletter
+\@ifundefined{c@thesislang}{
+  \newcounter{thesislang}
+  \setcounter{thesislang}{1}  % 0 --- Русская диссертация: весь текст на русском
+                              %       (Russian thesis: everything in Russian).
+                              % 1 --- Английская диссертация: обязательные
+                              %       титульный лист и аннотация на русском,
+                              %       далее весь текст на английском
+                              %       (English thesis: mandatory Russian title
+                              %       page and abstract first, the rest of the
+                              %       document in English).
+}{}
+\makeatother
+
 %%% Режим черновика %%%
 \makeatletter
 \@ifundefined{c@draft}{

@@ -1,0 +1,13 @@
+% Благодарности / Acknowledgements (необязательный раздел).
+\ifnumequal{\value{thesislang}}{1}{%
+  \chapter*{Acknowledgements}%
+  \addcontentsline{toc}{chapter}{Acknowledgements}%
+}{%
+  \chapter*{Благодарности}%
+  \addcontentsline{toc}{chapter}{Благодарности}%
+}
+\ifnum\value{thesislang}=1
+\fixme{Place your acknowledgements here.}
+\else
+\fixme{Текст благодарностей.}
+\fi

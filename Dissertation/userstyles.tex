@@ -259,6 +259,13 @@
 \let\originalcot\cot
 \let\originalcsc\csc
 
+% Обычная латеховская запись математики в обеих версиях: курсивные греческие
+% буквы, \le/\ge, \tan и т.д. Чтобы вернуть русскую математическую традицию
+% в русской работе, замените \iffalse на \ifnum\value{thesislang}=1\else.
+% Standard LaTeX math in both modes (italic Greek, \le/\ge, \tan, ...). To restore
+% the Russian math conventions in the Russian thesis, replace \iffalse below with
+% \ifnum\value{thesislang}=1\else.
+\iffalse
 %%% Русская традиция начертания математических знаков
 \renewcommand{\le}{\ensuremath{\leqslant}}
 \renewcommand{\leq}{\ensuremath{\leqslant}}
@@ -302,3 +309,4 @@
 \renewcommand{\chi}{\upchi}
 \renewcommand{\psi}{\uppsi}
 \renewcommand{\omega}{\upomega}
+\fi % конец русской математической традиции / end of Russian math conventions

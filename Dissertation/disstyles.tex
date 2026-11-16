@@ -5,7 +5,15 @@
 %}
 
 %%% Изображения %%%
-\graphicspath{{images/}{Dissertation/images/}}         % Пути к изображениям
+% Пути к изображениям. Каждая глава --- отдельная папка со своей папкой pictures.
+% Image search paths. Each chapter is its own folder with a pictures/ subfolder.
+\graphicspath{
+  {images/}
+  {Dissertation/images/}
+  {Dissertation/part1/}{Dissertation/part1/pictures/}
+  {Dissertation/part2/}{Dissertation/part2/pictures/}
+  {Dissertation/part3/}{Dissertation/part3/pictures/}
+}
 
 %%% Интервалы %%%
 %% По ГОСТ Р 7.0.11-2011, пункту 5.3.6 требуется полуторный интервал
@@ -89,7 +97,7 @@
 \newcommand*{\tocheader}{
 \ifnumequal{\value{pgnum}}{1}{%
     \ifendTOC\else\hbox to \linewidth%
-      {\noindent{}~\hfill{Стр.}}\par%
+      {\noindent{}~\hfill{\ifnum\value{thesislang}=1 Page\else\foreignlanguage{russian}{Стр.}\fi}}\par%
       \ifnumless{\value{page}}{3}{}{%
         \vspace{0.5\onelineskip}
       }

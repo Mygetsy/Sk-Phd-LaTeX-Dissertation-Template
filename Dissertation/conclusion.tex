@@ -1,21 +1,41 @@
-\chapter*{Заключение}                       % Заголовок
-\addcontentsline{toc}{chapter}{Заключение}  % Добавляем его в оглавление
+\ifnumequal{\value{thesislang}}{1}{%
+  \chapter*{Conclusion}%
+  \addcontentsline{toc}{chapter}{Conclusion}%
+}{%
+  \chapter*{Заключение}%                       % Заголовок
+  \addcontentsline{toc}{chapter}{Заключение}%  % Добавляем его в оглавление
+}
 
 %% Согласно ГОСТ Р 7.0.11-2011:
-%% 5.3.3 В заключении диссертации излагают итоги выполненного исследования, рекомендации, перспективы дальнейшей разработки темы.
-%% 9.2.3 В заключении автореферата диссертации излагают итоги данного исследования, рекомендации и перспективы дальнейшей разработки темы.
-%% Поэтому имеет смысл сделать эту часть общей и загрузить из одного файла в автореферат и в диссертацию:
+%% 5.3.3 В заключении диссертации излагают итоги выполненного исследования,
+%% рекомендации, перспективы дальнейшей разработки темы.
+%% 9.2.3 В заключении автореферата диссертации излагают итоги данного
+%% исследования. Поэтому эту часть делают общей и загружают из одного файла
+%% и~в~автореферат, и~в~диссертацию:
+%
+% Guide (Vasilyev): the conclusion must be aligned with the goals and the main
+% results submitted for the defense --- not a repetition of the introduction.
+% After a short opening paragraph, list the main results (in the same order as
+% the "main results submitted for the defense"), then discuss limitations and
+% future directions, and finally place the acknowledgements (a separate file).
+\ifnum\value{thesislang}=1
+\fixme{This dissertation addressed the problem of \dots{} The main goal was to
+\dots, and its key novelty lies in \dots}
 
+\noindent The main results of the dissertation are:
+\else
 Основные результаты работы заключаются в следующем.
+\fi
 \input{common/concl}
-И какая-нибудь заключающая фраза.
 
-Последний параграф может включать благодарности.  В заключение автор
-выражает благодарность и большую признательность научному руководителю
-Иванову~И.\,И. за поддержку, помощь, обсуждение результатов и~научное
-руководство. Также автор благодарит Сидорова~А.\,А. и~Петрова~Б.\,Б.
-за помощь в~работе с~образцами, Рабиновича~В.\,В. за предоставленные
-образцы и~обсуждение результатов, Занудятину~Г.\,Г. и авторов шаблона
-*Russian-Phd-LaTeX-Dissertation-Template* за~помощь в оформлении
-диссертации. Автор также благодарит много разных людей
-и~всех, кто сделал настоящую работу автора возможной.
+% Ограничения и перспективы дальнейшей разработки темы / limitations and future work
+\ifnum\value{thesislang}=1
+\fixme{The \dots{} developed in this dissertation is a promising direction in
+\dots, further development of which would contribute to progress in \dots}
+
+\noindent The most promising directions for further development of the research
+are:
+\begin{itemize}
+  \item \fixme{\dots}
+\end{itemize}
+\fi

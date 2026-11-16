@@ -1,9 +1,16 @@
 %%% Кодировки и шрифты %%%
 \ifxetexorluatex
-    % Язык по-умолчанию русский с поддержкой приятных команд пакета babel
-    \setmainlanguage[babelshorthands=true]{russian}
-    % Дополнительный язык = английский (в американской вариации по-умолчанию)
-    \setotherlanguage{english}
+    \ifnumequal{\value{thesislang}}{1}{% Английская диссертация / English thesis
+        % Главный язык --- английский, русский оставлен как дополнительный,
+        % чтобы корректно набирались обязательные русские титул и аннотация.
+        \setmainlanguage{english}
+        \setotherlanguage[babelshorthands=true]{russian}
+    }{% Русская диссертация / Russian thesis
+        % Язык по-умолчанию русский с поддержкой приятных команд пакета babel
+        \setmainlanguage[babelshorthands=true]{russian}
+        % Дополнительный язык = английский (в американской вариации по-умолчанию)
+        \setotherlanguage{english}
+    }
 
     % Проверка существования шрифтов. Недоступна в pdflatex
     \ifnumequal{\value{fontfamily}}{1}{

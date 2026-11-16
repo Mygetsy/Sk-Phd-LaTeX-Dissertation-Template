@@ -40,7 +40,13 @@
 
 %%% Подписи подрисунков %%%
 \DeclareCaptionSubType{figure}
-\renewcommand\thesubfigure{\asbuk{subfigure}} % нумерация подрисунков
+% нумерация подрисунков: латинскими буквами для английской работы,
+% русскими --- для русской / subfigure labels: Latin (EN) vs Cyrillic (RU)
+\ifnumequal{\value{thesislang}}{1}{%
+  \renewcommand\thesubfigure{\alph{subfigure}}%
+}{%
+  \renewcommand\thesubfigure{\asbuk{subfigure}}%
+}
 \ifsynopsis
 \DeclareCaptionFont{norm}{\fontsize{10pt}{11pt}\selectfont}
 \newcommand{\subfigureskip}{2.pt}

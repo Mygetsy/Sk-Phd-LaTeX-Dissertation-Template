@@ -2,8 +2,12 @@
 \graphicspath{{images/}{Synopsis/images/}}         % Пути к изображениям
 
 %%% Макет страницы %%%
-\geometry{a5paper, top=14mm, bottom=14mm, inner=18mm, outer=10mm, footskip=5mm, nomarginpar}%, showframe
+% Классический автореферат-брошюра A5 (закомментировано):
+%\geometry{a5paper, top=14mm, bottom=14mm, inner=18mm, outer=10mm, footskip=5mm, nomarginpar}%, showframe
+% Формат Сколтеха: A4, 14pt.
+\geometry{a4paper, top=2cm, bottom=2.cm, left=2.5cm, right=1cm, nofoot, nomarginpar} %, heightrounded, showframe
 \setlength{\topskip}{0pt}   %размер дополнительного верхнего поля
+\setlength{\footskip}{18.3pt} % снимет warning, согласно https://tex.stackexchange.com/a/334346
 
 %%% Интервалы %%%
 %% Реализация средствами класса (на основе setspace) ближе к типографской классике.

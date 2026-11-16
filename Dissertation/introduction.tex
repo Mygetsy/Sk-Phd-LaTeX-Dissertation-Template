@@ -1,33 +1,63 @@
-\chapter*{Введение}                         % Заголовок
-\addcontentsline{toc}{chapter}{Введение}    % Добавляем его в оглавление
+\ifnumequal{\value{thesislang}}{1}{%
+  \chapter*{Introduction}%
+  \addcontentsline{toc}{chapter}{Introduction}%
+}{%
+  \chapter*{Введение}%                        % Заголовок
+  \addcontentsline{toc}{chapter}{Введение}%   % Добавляем его в оглавление
+}
 
-\newcommand{\actuality}{}
+% Заголовки структурных элементов --- подчёркнутые и полужирные (как в
+% автореферате). Section labels are underlined + bold (as in the synopsis).
+\newcommand{\actuality}{\underline{\textbf{\actualityTXT}}}
+\newcommand{\actualityandprogress}{\underline{\textbf{\actualityandprogressTXT}}}
 \newcommand{\progress}{}
-\newcommand{\aim}{{\textbf\aimTXT}}
-\newcommand{\tasks}{\textbf{\tasksTXT}}
-\newcommand{\novelty}{\textbf{\noveltyTXT}}
-\newcommand{\influence}{\textbf{\influenceTXT}}
-\newcommand{\methods}{\textbf{\methodsTXT}}
-\newcommand{\defpositions}{\textbf{\defpositionsTXT}}
-\newcommand{\reliability}{\textbf{\reliabilityTXT}}
-\newcommand{\probation}{\textbf{\probationTXT}}
-\newcommand{\contribution}{\textbf{\contributionTXT}}
-\newcommand{\publications}{\textbf{\publicationsTXT}}
+\newcommand{\goalsproblems}{\underline{\textbf{\goalsproblemsTXT}}}
+\newcommand{\goal}{\underline{\textbf{\goalTXT}}}
+\newcommand{\aim}{\underline{\textbf{\aimTXT}}}
+\newcommand{\tasks}{\underline{\textbf{\tasksTXT}}}
+\newcommand{\novelty}{\underline{\textbf{\noveltyTXT}}}
+\newcommand{\influence}{\underline{\textbf{\influenceTXT}}}
+\newcommand{\theoreticalsignificance}{\underline{\textbf{\theoreticalsignificanceTXT}}}
+\newcommand{\practicalsignificance}{\underline{\textbf{\practicalsignificanceTXT}}}
+\newcommand{\methods}{\underline{\textbf{\methodsTXT}}}
+\newcommand{\defpositions}{\underline{\textbf{\defpositionsTXT}}}
+\newcommand{\reliability}{\underline{\textbf{\reliabilityTXT}}}
+\newcommand{\probation}{\underline{\textbf{\probationTXT}}}
+\newcommand{\contribution}{\underline{\textbf{\contributionTXT}}}
+\newcommand{\publications}{\underline{\textbf{\publicationsTXT}}}
 
 \input{common/characteristic} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
 
+\ifnumequal{\value{thesislang}}{1}{%
+% English pluralization: 1 -> singular, everything else -> plural, so the plural
+% ending is given for BOTH the "2--4" and the "5+" slots of \formbytotal.
+\textbf{Volume and structure of the work.} The dissertation consists of an
+introduction, \formbytotal{totalchapter}{chapter}{}{s}{s},
+a conclusion and \formbytotal{totalappendix}{appendix}{}{es}{es}.
+The total volume of the dissertation is
+\formbytotal{TotPages}{page}{}{s}{s}, including
+\formbytotal{totalcount@figure}{figure}{}{s}{s} and
+\formbytotal{totalcount@table}{table}{}{s}{s}.
+The reference list contains
+\formbytotal{citenum}{item}{}{s}{s}.
+
+% Organization of the Dissertation (Vasilyev, 10-Minute Guide): a structure
+% paragraph alone is not enough --- describe what each chapter is about. Think of
+% it as a shorter, equation- and figure-free version of the abstract, with
+% \cref references to the sections, so the reader learns the main result of each
+% chapter.
+\textbf{Organization of the Dissertation.}
+\fixme{Briefly describe the content and the main result of each chapter, with
+references to the corresponding sections.}
+}{%
 \textbf{Объем и структура работы.} Диссертация состоит из~введения,
 \formbytotal{totalchapter}{глав}{ы}{}{},
 заключения и
 \formbytotal{totalappendix}{приложен}{ия}{ий}{}.
-%% на случай ошибок оставляю исходный кусок на месте, закомментированным
-%Полный объём диссертации составляет  \ref*{TotPages}~страницу
-%с~\totalfigures{}~рисунками и~\totaltables{}~таблицами. Список литературы
-%содержит \total{citenum}~наименований.
-%
 Полный объём диссертации составляет
 \formbytotal{TotPages}{страниц}{у}{ы}{}, включая
 \formbytotal{totalcount@figure}{рисун}{ок}{ка}{ков} и
 \formbytotal{totalcount@table}{таблиц}{у}{ы}{}.
 Список литературы содержит
 \formbytotal{citenum}{наименован}{ие}{ия}{ий}.
+}

@@ -1,10 +1,12 @@
-% Титульный лист (ГОСТ Р 7.0.11-2001, 5.1)
+% English title page (used only when thesislang=1, after the Russian one).
+% Uses the core \thesis… macros from common/data.tex, which hold the English
+% values in an English thesis.
 \thispagestyle{empty}
 \begin{center}
-\thesisOrganization
+{\thesisInOrganization}
 \end{center}
 %
-\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\vspace{0pt plus4fill}
 \IfFileExists{images/logo.pdf}{
   \begin{minipage}[b]{0.5\linewidth}
     \begin{flushleft}
@@ -13,53 +15,50 @@
   \end{minipage}%
   \begin{minipage}[b]{0.5\linewidth}
     \begin{flushright}
-      На правах рукописи\\
-%      \textsl {УДК \thesisUdk}
+      As a manuscript\\
     \end{flushright}
   \end{minipage}
 }{
 \begin{flushright}
-На правах рукописи
-
-%\textsl {УДК \thesisUdk}
+As a manuscript
 \end{flushright}
 }
 %
-\vspace{0pt plus6fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\vspace{0pt plus6fill}
 \begin{center}
 {\large \thesisAuthor}
 \end{center}
 %
-\vspace{0pt plus1fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\vspace{0pt plus1fill}
 \begin{center}
 \textbf {\large %\MakeUppercase
 \thesisTitle}
 
-\vspace{0pt plus2fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\vspace{0pt plus2fill}
 {%\small
-Специальность \thesisSpecialtyNumber\ "---
+Specialty \thesisSpecialtyNumber\
 
-<<\thesisSpecialtyTitle>>
+\thesisSpecialtyTitle
 }
 
 \ifdefined\thesisSpecialtyTwoNumber
 {%\small
-Специальность \thesisSpecialtyTwoNumber\ "---
+Specialty \thesisSpecialtyTwoNumber\
 
-<<\thesisSpecialtyTwoTitle>>
+\thesisSpecialtyTwoTitle
 }
 \fi
 
-\vspace{0pt plus2fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
-Диссертация на соискание учёной степени
+\vspace{0pt plus2fill}
+Dissertation for the degree of
 
 \thesisDegree
 \end{center}
 %
-\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\vspace{0pt plus4fill}
 \begin{flushright}
 \ifdefined\supervisorTwoFio
-Научные руководители:
+Supervisors:
 
 \supervisorRegalia
 
@@ -77,7 +76,7 @@
 \supervisorTwoFio
 \fi
 \else
-Научный руководитель:
+Supervisor:
 
 \supervisorRegalia
 
@@ -90,5 +89,5 @@
 
 \end{flushright}
 %
-\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
-{\centering\thesisCity\ "--- \thesisYear\par}
+\vspace{0pt plus4fill}
+{\centering\thesisCity\ --- \thesisYear\par}
